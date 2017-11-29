@@ -1,6 +1,6 @@
 [English version] (https://gitlab.pervasive.it.uc3m.es/aptel/http/blob/master/README_EN.md)
 
-# Aplicaciones Telemáticas: Servidores Web (HTTP)
+<h1>Aplicaciones Telemáticas: Servidores Web (HTTP)</h1>
 
 <p></p>
 <blockquote>
@@ -12,7 +12,7 @@ En aula global disponéis de 2 ficheros que debéis descargar para la realizaci�
 El primero (<tt>apache2.conf</tt>) contiene directivas necesarias para poder lanzar el servidor y directivas específicas relacionadas con el comportamiento.
 El segundo fichero (<tt>mime.types</tt>) contiene la lista de tipos MIME relacionadas con el contenido que sirve el servidor. La estructura de este último fichero es muy sencilla: tipo/subtipo y la extensión asociada a dicho tipo.
 
-## Configuración del servidor
+<h3>Configuración del servidor</h3>
 Antes de ejecutar el servidor, necesitamos modificar varias directivas. Para obtener información detallada sobre cualquiera de ellas, 
 puedes consultar <a href="http://httpd.apache.org/docs/mod/directives.html">Directivas Apache</a>.
 <p></p>
@@ -89,7 +89,7 @@ Verifique que esta directiva ya está definida y, por lo general, es <tt>index.h
 </li>
 </ol>
 
-## Peticiones y respuestas HTTP
+<h3>Peticiones y respuestas HTTP</h3>
 Una vez que hemos comprobado el funcionamiento de nuestro servidor utilizando el navegador como cliente, vamos a utilizar un cliente <tt>telnet</tt>.
 
 <ol start="7">
@@ -106,7 +106,7 @@ Mide cuánto es este tiempo y comprueba que coincide con el que viene especifica
 </ol>
 
 
-## Procesos y recursos en el servidor web
+<h3>Procesos y recursos en el servidor web</h3>
 <ol start="11">
 <li>Mira cuántos procesos se están ejecutando. Para ello ejecuta el comando <tt>ps -x</tt>.
 
@@ -121,7 +121,7 @@ de <tt>/usr/sbin/apache2...</tt> o el comando <tt>kill</tt> junto con el número
 </li>
 </ol>
 
-## Apache Logs
+<h3>Apache Logs</h3>
 El servidor Apache genera unos registros ("log") interesantes sobre su funcionamiento. Por un lado, el registro de errores y por otro el registro de accesos.
 <ol start="12">
 <li>El registro de errores está en el fichero indicado por la directiva <b><tt>ErrorLog</tt></b>. 
@@ -135,7 +135,7 @@ Averigua qué directiva de <tt>apache.conf</tt> tienes que cambiar para consegui
 en lugar de la IP. Haz el cambio y comprueba que funciona.</li>
 </ol>
 
-## Tipos de contenido en Apache
+<h3>Tipos de contenido en Apache</h3>
 Como habrás visto al hacer las consultas de las preguntas 7 y 8, el servidor nos dice el tipo MIME (Content-Type) del objeto que nos envía. 
 Para saber el tipo MIME de un objeto, consulta la extensión del mismo en el fichero indicado en la directiva <tt>TypesConfig</tt>. 
 <ol start="14">
@@ -146,7 +146,7 @@ con un navegador y con telnet. ¿Cómo ves el fichero en el navegador? ¿cuál e
 Comprueba que funciona correctamente ¿Qué hace ahora el navegador web? Prueba con varios navegadores, p.ej., Chrome y Firefox.</li>
 </ol>
 
-## Gestión de Directorios y seguridad
+<h3>Gestión de Directorios y seguridad</h3>
 Se puede cambiar la configuración para un directorio concreto mediante la directiva <Directory>. Por ejemplo, añade el siguiente código al final del fichero apache.conf (sustituyendo DOCUMENT_ROOT por el path completo del directorio adecuado de acuerdo a la configuración de tu servidor web):
 <pre>
 <Directory DOCUMENT_ROOT/internal>
@@ -177,21 +177,18 @@ Observa con un telnet cómo es la respuesta ¿En qué se diferencia? ¿qué envi
 </li>
 </ol>
 
-
-
-<p>The <b>Redirect</b> directive enables a client to be redirected from one URL to another.</p>
-<ol start="24">
-<li>
-<p>Use this directive to specify that browsers that visit the URL <tt>http://your_machine:your_port/old/</tt> are automatically redirected to <tt>http://your_machine:your_port/new/</tt>.</p>
-<p>The <b>&lt;VirtualHost&gt;</b> directive enables the web page sent by the server to depend on the name used to access it. This name is sent in the <tt>Host</tt> header of HTTP/1.1.</p>
-</li>
-<li>Create two new aptel.html pages (with the message Hello world vhost1, and with the message Hello world vhost2) and copy them to the virual hosts directories (look at the end of the httpd.conf file). Anwser the server with telnet and play with the host header!</li>
-</ol></blockquote>
-
-## Parte Opcional: Redirección y "Hosts" Virtuales
+<h3>Parte Opcional: Redirección y "Hosts" Virtuales</h3>
 La directiva <b><tt>Redirect</tt></b> permite redireccionar a un cliente de una URL a otra. Para esta parte se requiere que modifique las directivas <li><strong><tt>within the VirtualHost directive</tt></strong> change : ServerAdmin, ServerName, ErrorLog, CustomLog</li>
+<ol start="22">
+<li>Usa esta directiva para hacer que los navegadores que visiten la URL <tt>http://your_machine:your_port/old/</tt>
+sean automáticamente redirigidos a <tt>http://your_machine:your_port/new/</tt>.</li>
 
-22.	Usa esta directiva para hacer que los navegadores que visiten la URL http://your_machine:your_port/old/ sean automáticamente redirigidos a http://your_machine:your_port/new/.
-La directiva <VirtualHost> permite hacer que el servidor responda distintas páginas web, según el nombre de servidor que utilicemos para acceder a él. Este nombre se le envía con la cabecera Host de HTTP/1.1.
-23.	Crea dos nuevas páginas aptel.html (con mensajes “Hello world vhost1”, y “Hello world vhost2”, respectivamente) y cópialas a los directorios virtual hosts (al final del fichero apache2.conf). Haz pruebas enviando peticiones telnet cambiando la cabecera host.
+<p>La directiva <b>&lt;VirtualHost&gt;</b> permite hacer que el servidor responda distintas páginas web, 
+según el nombre de servidor que utilicemos para acceder a él. Este nombre se le envía con la cabecera Host de HTTP/1.1.</p>
+</li>
 
+<li>Crea dos nuevas páginas <tt>aptel.html</tt> (con mensajes “¡Hola mundo vhost1!”, y “¡Hola mundo vhost2!”, respectivamente) y 
+cópialas a los directorios virtual hosts (al final del fichero <tt>apache2.conf</tt>). Haz pruebas enviando peticiones telnet cambiando la cabecera host.
+</li>
+</ol>
+</blockquote>
