@@ -138,20 +138,20 @@ Comprueba que funciona correctamente ¿Qué hace ahora el navegador web? Prueba 
 </ol>
 
 <h3>Gestión de Directorios y seguridad</h3>
-Se puede cambiar la configuración para un directorio concreto mediante la directiva <Directory>. Por ejemplo, añade el siguiente código al final del fichero apache2.conf
-(sustituyendo <tt>DocumentRoot</tt> por la ruta completa al directorio adecuado de acuerdo a la configuración de tu servidor web):
+Se puede cambiar la configuración para un directorio concreto mediante la directiva <tt>&lt;Directory></tt>. Por ejemplo, añade el siguiente código al final del fichero apache2.conf
+(sustituyendo <tt>DOCUMENT_ROOT</tt> por la ruta completa al directorio adecuado de acuerdo a la configuración de tu servidor web):
 <blockquote>
 <pre>
-&lt;Directory DocumentRoot/internal>
+&lt;Directory DOCUMENT_ROOT/internal>
     AuthType Basic
     AuthName "Telematic Applications"
-    AuthUserFile DocumentRoot/passwd
+    AuthUserFile DOCUMENT_ROOT/passwd
     Require user aptel
 &lt;/Directory>
 </pre>
 </blockquote>
 <ol start="15">
-<li>Crea el directorio <tt>DocumentRoot/internal</tt> y copia en él el fichero <tt>aptel.html</tt>. Recuerda añadir este nombre de fichero a los ficheros que se envía por defecto.
+<li>Crea el directorio <tt>DOCUMENT_ROOT/internal</tt> (dentro de tu carpeta especificada en la directiva <tt>DocumentRoot</tt>, <tt>defaultdocs</tt>) y copia en él el fichero <tt>aptel.html</tt>. Recuerda añadir este nombre de fichero a los ficheros que se envía por defecto.
 ¿Qué pasa ahora cuando intentas acceder con un navegador a la URL <tt>http://your_machine:your_port/internal</tt>?
 
 <p><strong>Nota:</strong> puedes añadir un pequeño texto (por ejemplo, cambiar el mensaje por &iexcl;Hola Mundo interno!) al fichero si lo quieres diferenciar.</p>
