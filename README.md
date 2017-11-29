@@ -33,9 +33,7 @@ d    --- docs
 d    --- log
 </pre>
 </li>
-<li>A continuación, modificaremos ciertas directivas para que apunten a ficheros en nuestra cuenta y para determinar ciertos parámetros de ejecución:
-<ul>
-<li>Abre <tt>apache2.conf</tt> y cambia:
+<li>A continuación, modificaremos ciertas directivas para que apunten a ficheros en nuestra cuenta y para determinar ciertos parámetros de ejecución. Abre <tt>apache2.conf</tt> y cambia:
 <ul>
 <li><b>ServerRoot</b>: ruta al directorio en el que se encuentran los ficheros de configuración necesarios para la correcta operación del servidor 
 (ruta absoluta al directorio <tt>httpd</tt> de vuestra cuenta).</li>
@@ -53,7 +51,8 @@ d    --- log
 </li>
 
 <li>Crea una página web sencilla <tt>aptel.html</tt> en <tt>httpd/defaultdocs</tt>, por ejemplo:
-<pre>
+
+```
 <html>
 <head>
  <title>Página de inicio Aptel</title>
@@ -62,7 +61,7 @@ d    --- log
 ¡Hola mundo!
 </body>
 </html>
-</pre>
+```
 </li>
 
 <li>Ahora podemos <span style="font-weight: bold;">arrancar nuestro servidor</span> indicando el fichero de configuración que hemos adaptado. Se hace con el comando: 
