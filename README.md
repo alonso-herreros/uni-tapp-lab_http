@@ -2,7 +2,7 @@
 
 # Aplicaciones Telemáticas: Servidores Web (HTTP)
 
-En esta práctica, configuraremos un servidor Web Apache version 2.X y probaremos su funcionamiento enviando peticiones HTTP y analizando las respuestas.
+En esta práctica, configuraremos un servidor Web Apache version 2.4.X y probaremos su funcionamiento enviando peticiones HTTP y analizando las respuestas.
 En el laboratorio tenemos un servidor apache instalado en el directorio /usr/sbin/. Por defecto, Apache obtiene la información de configuración del fichero <tt>/etc/apache2/apache2.conf</tt>. 
 Nosotros, en cambio, utilizaremos nuestro propio fichero de configuración para probar distintas opciones y adaptarlo a nuestras necesidades.
 
