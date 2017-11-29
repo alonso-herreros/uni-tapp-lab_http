@@ -157,7 +157,7 @@ Se puede cambiar la configuración para un directorio concreto mediante la direc
 <p><strong>Nota:</strong> puedes añadir un pequeño texto (por ejemplo, cambiar el mensaje por &iexcl;Hola Mundo interno!) al fichero si lo quieres diferenciar.</p>
 </li>
 
-<li>Deberás generar el fichero de passwords (<tt>DocumentRoot/passwd</tt>), que se puede hacer con la utilidad <tt>htpasswd</tt>.
+<li>Deberás generar el fichero de passwords (<tt>DOCUMENT_ROOT/passwd</tt>), que se puede hacer con la utilidad <tt>htpasswd</tt>.
 Crea con esta utilidad un fichero con un usuario <tt>aptel</tt> y contraseña <tt>redes</tt>. Prueba a entrar con este usuario y password usando un navegador web.
 </li>
 
