@@ -163,12 +163,6 @@ Crea con esta utilidad un fichero con un usuario <tt>aptel</tt> y contraseña <t
 
 <li>Inténtalo ahora usando un telnet ¿Cuál es el nombre del reino? ¿De dónde lo obtiene el servidor? 
 Manda una segunda petición para conseguir acceder a la página. Puedes usar el siguiente: <a href="https://www.base64encode.org/">conversor a base64</a>.</li>
-
-<li>Cambia la configuración para que la autenticación sea de tipo "Digest" (necesitarás también habilitar el módulo correspondiente de Apache). 
-Observa con un telnet cómo es la respuesta ¿En qué se diferencia? ¿qué enviaría ahora el cliente? ¿qué ventajas tiene frente a la autenticación "Basic"?
-
-<p><strong>Nota:</strong> no hace falta que realice la petición con "Digest", simplemente que conozca cómo se hace.</p>
-</li>
 </ol>
 
 <h3>Parte Opcional: Redirección y "Hosts" Virtuales</h3>
