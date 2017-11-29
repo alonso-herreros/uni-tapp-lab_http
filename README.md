@@ -41,7 +41,7 @@ d    --- log
 <li><strong><tt>Listen</tt></strong>: indique como puerto 9xxx, donde xxx corresponde a los últimos 3 números de la dirección IP de la máquina.</li> 
 </ul>
 Otras directivas como <strong><tt>DocumentRoot</tt></strong>, <strong><tt>LockFile</tt></strong>, <strong><tt>PidFile</tt></strong>, <strong><tt>ScoreBoardFile</tt></strong>,
-<strong><tt>ErrorLog</tt></strong>, <strong><tt>CustomLog</tt></strong> y <strong><tt>TypesConfig</tt> indican nombers de directorios o ficheros (que crea el servidor)
+<strong><tt>ErrorLog</tt></strong>, <strong><tt>CustomLog</tt></strong> y <strong><tt>TypesConfig</tt></strong> indican nombers de directorios o ficheros (que crea el servidor)
 de forma relativa a la ruta especificada en <b><tt>ServerRoot</tt></b>.
 </li>
 
