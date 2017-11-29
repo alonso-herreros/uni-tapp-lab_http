@@ -127,7 +127,7 @@ en lugar de la IP. Haz el cambio y comprueba que funciona.</li>
 </ol>
 
 <h3>Tipos de contenido en Apache</h3>
-Como habrás visto al hacer las consultas de las preguntas 7 y 8, el servidor nos dice el tipo MIME (Content-Type) del objeto que nos envía. 
+Como habrás visto al hacer las consultas de las preguntas 6 y 7, el servidor nos dice el tipo MIME (Content-Type) del objeto que nos envía. 
 Para saber el tipo MIME de un objeto, consulta la extensión del mismo en el fichero indicado en la directiva <tt>TypesConfig</tt>. 
 <ol start="13">
 <li>Crea una copia del fichero <tt>aptel.html</tt> con nombre <tt>test.aptel</tt> y cambia la directiva para que <tt>test.aptel</tt> sea el fichero que se envía por defecto.
