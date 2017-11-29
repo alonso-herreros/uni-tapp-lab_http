@@ -112,7 +112,7 @@ de <tt>/usr/sbin/apache2...</tt> o el comando <tt>kill</tt> junto con el número
 </li>
 </ol>
 
-<h3>Apache Logs</h3>
+<h3>Gestión de "Logs"</h3>
 El servidor Apache genera unos registros ("log") interesantes sobre su funcionamiento. Por un lado, el registro de errores y por otro el registro de accesos.
 <ol start="11">
 <li>El registro de errores está en el fichero indicado por la directiva <b><tt>ErrorLog</tt></b>. 
