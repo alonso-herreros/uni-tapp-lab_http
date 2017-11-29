@@ -150,7 +150,7 @@ Se puede cambiar la configuración para un directorio concreto mediante la direc
 &lt;/Directory>
 </pre>
 </blockquote>
-<ol start="14">
+<ol start="15">
 <li>Crea el directorio <tt>DocumentRoot/internal</tt> y copia en él el fichero <tt>aptel.html</tt>
 ¿Qué pasa ahora cuando intentas acceder con un navegador a la URL <tt>http://your_machine:your_port/internal</tt>?
 
@@ -172,8 +172,9 @@ Observa con un telnet cómo es la respuesta ¿En qué se diferencia? ¿qué envi
 </ol>
 
 <h3>Parte Opcional: Redirección y "Hosts" Virtuales</h3>
-La directiva <b><tt>Redirect</tt></b> permite redireccionar a un cliente de una URL a otra. Para esta parte se requiere que modifique las directivas <li><strong><tt>within the VirtualHost directive</tt></strong> change : ServerAdmin, ServerName, ErrorLog, CustomLog</li>
-<ol start="22">
+La directiva <b><tt>Redirect</tt></b> permite redireccionar a un cliente de una URL a otra. Para esta parte se requiere que modifique las directivas 
+<strong>within the <tt>VirtualHost</tt> directive</strong>: <tt>ServerAdmin</tt> y <tt>ServerName</tt>.</li>
+<ol start="19">
 <li>Usa esta directiva para hacer que los navegadores que visiten la URL <tt>http://your_machine:your_port/old/</tt>
 sean automáticamente redirigidos a <tt>http://your_machine:your_port/new/</tt>.</li>
 
@@ -185,4 +186,3 @@ según el nombre de servidor que utilicemos para acceder a él. Este nombre se l
 cópialas a los directorios virtual hosts (al final del fichero <tt>apache2.conf</tt>). Haz pruebas enviando peticiones telnet cambiando la cabecera host.
 </li>
 </ol>
-</blockquote>
