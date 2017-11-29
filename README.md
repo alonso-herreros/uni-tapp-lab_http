@@ -130,7 +130,7 @@ en lugar de la IP. Haz el cambio y comprueba que funciona.</li>
 Como habrás visto al hacer las consultas de las preguntas 7 y 8, el servidor nos dice el tipo MIME (Content-Type) del objeto que nos envía. 
 Para saber el tipo MIME de un objeto, consulta la extensión del mismo en el fichero indicado en la directiva <tt>TypesConfig</tt>. 
 <ol start="13">
-<li>Cambia el nombre al fichero <tt>aptel.html</tt> por <tt>test.aptel</tt> y cambia la directiva para que <tt>test.aptel</tt> sea el fichero que se envía por defecto.
+<li>Crea una copia del fichero <tt>aptel.html</tt> con nombre <tt>test.aptel</tt> y cambia la directiva para que <tt>test.aptel</tt> sea el fichero que se envía por defecto.
 Realiza las peticiones a <tt>http://your_machine:your_port/test.aptel</tt> con un navegador y con telnet ¿Cómo ves el fichero en el navegador? ¿cuál es el tipo MIME con él que se nos envía el fichero? ¿por qué?</li>
 
 <li>Cambia la configuración para que cuando la extensión sea "aptel" devuelva el tipo MIME  application/x-type-aptel. 
@@ -138,22 +138,23 @@ Comprueba que funciona correctamente ¿Qué hace ahora el navegador web? Prueba 
 </ol>
 
 <h3>Gestión de Directorios y seguridad</h3>
-Se puede cambiar la configuración para un directorio concreto mediante la directiva <Directory>. Por ejemplo, añade el siguiente código al final del fichero apache.conf (sustituyendo DOCUMENT_ROOT por el path completo del directorio adecuado de acuerdo a la configuración de tu servidor web):
+Se puede cambiar la configuración para un directorio concreto mediante la directiva <Directory>. Por ejemplo, añade el siguiente código al final del fichero apache2.conf
+(sustituyendo <tt>DocumentRoot</tt> por la ruta relativa (o absoluta) al directorio adecuado de acuerdo a la configuración de tu servidor web):
 <blockquote>
 <pre>
-<Directory DOCUMENT_ROOT/internal>
+&lt;Directory DocumentRoot/internal>
     AuthType Basic
     AuthName "Computer Networks"
-    AuthUserFile DOCUMENT_ROOT/passwd
+    AuthUserFile DocumentRoot/passwd
     Require user aptel
-</Directory>
+&lt;/Directory>
 </pre>
 </blockquote>
 <ol start="14">
 <li>Crea el directorio <tt>DocumentRoot/internal</tt> y copia en él el fichero <tt>aptel.html</tt>
 ¿Qué pasa ahora cuando intentas acceder con un navegador a la URL <tt>http://your_machine:your_port/internal</tt>?
 
-<p><strong>Nota:</strong> puedes añadir un pequeño texto al fichero si lo quieres diferenciar.</p>
+<p><strong>Nota:</strong> puedes añadir un pequeño texto (por ejemplo, cambiar el mensaje por &iexcl;Hola Mundo interno!) al fichero si lo quieres diferenciar.</p>
 </li>
 
 <li>Deberás generar el fichero de passwords (<tt>DocumentRoot/passwd</tt>), que se puede hacer con la utilidad <tt>htpasswd</tt>.
