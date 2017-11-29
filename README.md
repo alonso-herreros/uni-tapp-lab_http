@@ -70,21 +70,20 @@ Intenta acceder también usando simplemente <tt>http://servername:port/</tt>.
 <p>Tenga en cuenta que si no especificamos la página HTML que queremos acceder, el servidor puede actuar de dos maneras: </p>
 <ul>
 <li>Mostrando un listado de los directorios (no recomendable), o</li>
-<li>Mostrando un fichero HTML por defecto. 
-</li>
+<li>Mostrando un fichero HTML por defecto.</li>
 </ul>
 
 <p>Para obtener el segundo comportamiento, se usa la directiva <b><tt>DirectoryIndex</tt></b>  para especificar el nombre del fichero por defecto. 
 Verifique que esta directiva ya está definida y, por lo general, es <tt>index.html</tt>. De momento, no modifique esta directiva. </p>
 
-<p><strong>Nota:</strong> Si hay un error, investiga qué ocurre accediendo al fichero configurado en la directiva <tt>ErrorLog</tt></p>.
+<p><strong>Nota:</strong> Si hay un error, investiga qué ocurre accediendo al fichero configurado en la directiva <tt>ErrorLog</tt>.</p>
 </li>
 </ol>
 
 <h3>Peticiones y respuestas HTTP</h3>
 Una vez que hemos comprobado el funcionamiento de nuestro servidor utilizando el navegador como cliente, vamos a utilizar un cliente <tt>telnet</tt>.
 
-<ol start="7">
+<ol start="6">
 <li>Haz las peticiones realizadas anteriormente con el navegador <tt>http://your_machine:your_port/aptel.html</tt>? y
 <tt>http://your_machine:your_port/</tt> usando <tt>telnet</tt><. Envía peticiones usando HTTP/0.9 y HTTP/1.0 ¿Qué respuestas y qué cabeceras obtiene?/li>
 
@@ -99,7 +98,7 @@ Mide cuánto es este tiempo y comprueba que coincide con el que viene especifica
 
 
 <h3>Procesos y recursos en el servidor web</h3>
-<ol start="11">
+<ol start="10">
 <li>Mira cuántos procesos se están ejecutando. Para ello ejecuta el comando <tt>ps -x</tt>.
 
 <p>Este número se puede controlar con la directiva <tt>StartServers</tt>. El servidor arranca inicialmente este número de procesos hijo para atender tráfico, 
@@ -115,7 +114,7 @@ de <tt>/usr/sbin/apache2...</tt> o el comando <tt>kill</tt> junto con el número
 
 <h3>Apache Logs</h3>
 El servidor Apache genera unos registros ("log") interesantes sobre su funcionamiento. Por un lado, el registro de errores y por otro el registro de accesos.
-<ol start="12">
+<ol start="11">
 <li>El registro de errores está en el fichero indicado por la directiva <b><tt>ErrorLog</tt></b>. 
 Con la directiva <b><tt>LogLevel</tt></b> se puede variar el nivel de detalle del registro. 
 Observa el fichero de registro de errores y aumenta el nivel de detalle a "debug", arranca de nuevo el servidor y comprueba cómo para el mismo tipo de peticiones
@@ -130,9 +129,9 @@ en lugar de la IP. Haz el cambio y comprueba que funciona.</li>
 <h3>Tipos de contenido en Apache</h3>
 Como habrás visto al hacer las consultas de las preguntas 7 y 8, el servidor nos dice el tipo MIME (Content-Type) del objeto que nos envía. 
 Para saber el tipo MIME de un objeto, consulta la extensión del mismo en el fichero indicado en la directiva <tt>TypesConfig</tt>. 
-<ol start="14">
-<li>Añade que el fichero <tt>aptel.html</tt> sea el fichero que se envía por defecto y realiza las peticiones a <tt>http://your_machine:your_port/test.aptel</tt>
-con un navegador y con telnet. ¿Cómo ves el fichero en el navegador? ¿cuál es el tipo MIME con él que se nos envía el fichero? ¿por qué?
+<ol start="13">
+<li>Cambia el nombre al fichero <tt>aptel.html</tt> por <tt>test.aptel</tt> y cambia la directiva para que <tt>test.aptel</tt> sea el fichero que se envía por defecto.
+Realiza las peticiones a <tt>http://your_machine:your_port/test.aptel</tt> con un navegador y con telnet ¿Cómo ves el fichero en el navegador? ¿cuál es el tipo MIME con él que se nos envía el fichero? ¿por qué?</li>
 
 </li>Cambia la configuración para que cuando la extensión sea "aptel" devuelva el tipo MIME  application/x-type-aptel. 
 Comprueba que funciona correctamente ¿Qué hace ahora el navegador web? Prueba con varios navegadores, p.ej., Chrome y Firefox.</li>
