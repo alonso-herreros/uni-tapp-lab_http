@@ -122,7 +122,7 @@ se almacena un mayor número de registros.</li>
 
 <li>La directiva <b><tt>CustomLog</tt></b>  nos indica el fichero donde se va a guardar registro de los accesos a nuestro web. 
 Examina el fichero de registro de accesos. Como ves, se identifica a las máquinas únicamente por su IP. 
-Averigua qué directiva de <tt>apache.conf</tt> tienes que cambiar para conseguir que en el registro de accesos aparezca el nombre de la máquina ("hostname") 
+Averigua qué directiva de <tt>apache2.conf</tt> tienes que cambiar para conseguir que en el registro de accesos aparezca el nombre de la máquina ("hostname") 
 en lugar de la IP. Haz el cambio y comprueba que funciona.</li>
 </ol>
 
@@ -133,12 +133,13 @@ Para saber el tipo MIME de un objeto, consulta la extensión del mismo en el fic
 <li>Cambia el nombre al fichero <tt>aptel.html</tt> por <tt>test.aptel</tt> y cambia la directiva para que <tt>test.aptel</tt> sea el fichero que se envía por defecto.
 Realiza las peticiones a <tt>http://your_machine:your_port/test.aptel</tt> con un navegador y con telnet ¿Cómo ves el fichero en el navegador? ¿cuál es el tipo MIME con él que se nos envía el fichero? ¿por qué?</li>
 
-</li>Cambia la configuración para que cuando la extensión sea "aptel" devuelva el tipo MIME  application/x-type-aptel. 
+<li>Cambia la configuración para que cuando la extensión sea "aptel" devuelva el tipo MIME  application/x-type-aptel. 
 Comprueba que funciona correctamente ¿Qué hace ahora el navegador web? Prueba con varios navegadores, p.ej., Chrome y Firefox.</li>
 </ol>
 
 <h3>Gestión de Directorios y seguridad</h3>
 Se puede cambiar la configuración para un directorio concreto mediante la directiva <Directory>. Por ejemplo, añade el siguiente código al final del fichero apache.conf (sustituyendo DOCUMENT_ROOT por el path completo del directorio adecuado de acuerdo a la configuración de tu servidor web):
+<blockquote>
 <pre>
 <Directory DOCUMENT_ROOT/internal>
     AuthType Basic
@@ -147,7 +148,8 @@ Se puede cambiar la configuración para un directorio concreto mediante la direc
     Require user aptel
 </Directory>
 </pre>
-<ol start="16">
+</blockquote>
+<ol start="14">
 <li>Crea el directorio <tt>DocumentRoot/internal</tt> y copia en él el fichero <tt>aptel.html</tt>
 ¿Qué pasa ahora cuando intentas acceder con un navegador a la URL <tt>http://your_machine:your_port/internal</tt>?
 
