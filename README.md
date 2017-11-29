@@ -168,7 +168,7 @@ Manda una segunda petición para conseguir acceder a la página. Puedes usar el 
 <h3>Parte Opcional: Redirección y "Hosts" Virtuales</h3>
 La directiva <b><tt>Redirect</tt></b> permite redireccionar a un cliente de una URL a otra. Para esta parte se requiere que modifique las directivas 
 <strong>within the <tt>VirtualHost</tt> directive</strong>: <tt>ServerAdmin</tt> y <tt>ServerName</tt>.</li>
-<ol start="19">
+<ol start="18">
 <li>Usa esta directiva para hacer que los navegadores que visiten la URL <tt>http://your_machine:your_port/old/</tt>
 sean automáticamente redirigidos a <tt>http://your_machine:your_port/new/</tt>.</li>
 
