@@ -58,7 +58,7 @@ de forma relativa a la ruta especificada en <b><tt>ServerRoot</tt></b>.
 </li>
 
 <li>Ahora podemos <span style="font-weight: bold;">arrancar nuestro servidor</span> indicando el fichero de configuración que hemos adaptado. Se hace con el comando: 
-<pre>/usr/sbin/apache2 -f $PATH_COMPLETO/apache2.conf -t</pre>
+<pre>/usr/sbin/apache2 -f $PATH_COMPLETO/apache2.conf</pre>
 
 <p>Verifica que el servidor se está ejecutando: usando el comando <tt>ps</tt> o bien abriendo el fichero <tt>apache2.pid</tt>
 (si este fichero no existe, es porque el servidor no está ejecutando-- revisa los logs para detectar el problema).</p>
