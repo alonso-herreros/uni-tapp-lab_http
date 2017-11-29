@@ -144,7 +144,7 @@ Se puede cambiar la configuración para un directorio concreto mediante la direc
 <pre>
 &lt;Directory DocumentRoot/internal>
     AuthType Basic
-    AuthName "Computer Networks"
+    AuthName "Telematic Applications"
     AuthUserFile DocumentRoot/passwd
     Require user aptel
 &lt;/Directory>
