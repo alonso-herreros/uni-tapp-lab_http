@@ -5,11 +5,10 @@ In this assignment, we will configure an <a href="http://httpd.apache.org/">Apac
 
 A web server of that version is installed in the directory <tt>/usr/sbin/apache</tt> on the lab computers. By default, Apache obtains the configuration information from the file <tt>/etc/apache2/apache2.conf</tt>. However the configuration stored in that directory does not fit into our purposes and cannot be launched without root permissions. So we're going to make our own!!!
 
-In aula global you can find three files to be downloaded (apache2.conf, httpd.conf and mime.types). The first one (apache2.conf) contains several general directives
-that should be present to allow the server to run. At the end of this first file an include directive loads the second (httpd.conf). 
-That second file (httpd.conf) contains directives specific to the content/behaviour of your server. We will modify serveral directives. 
+In aula global you can find two files to be downloaded: <tt>apache2.conf</tt> and <tt>mime.types</tt>). The first one (<tt>apache2.conf</tt>) contains several general directives
+that should be present to allow the server to run and specific directives to the content/behaviour of your server. We will modify serveral directives. 
 If you need to more information (about any directive) have a look to <a href="http://httpd.apache.org/docs/mod/directives.html">http://httpd.apache.org/docs/mod/directives.html</a>.
-The last one,  <tt>mime.types</tt> contains a complete list of MIME types, which are a way to convey the document type information. The structure is very simple; it contains type/subtype and the file extension associated to this type.
+The last one (<tt>mime.types</tt>) contains a complete list of MIME types, which are a way to convey the document type information. The structure is very simple; it contains type/subtype and the file extension associated to this type.
 
 <ol>
 <li>
@@ -103,7 +102,7 @@ If everithing is correct, execute:
 <p>The Apache server generates two log files containing interesting and useful information: the error log and the access log.</p>
 <ol start="15">
 <li>The error log is written to the file indicated in the <b>ErrorLog</b> directive. The level of detail of this log can be varied using the <b>LogLevel</b> directive. Study the contents of the error log, then increase the level of detail to "debug", restart the server and check that, for the same type of requests, more information is logged.</li>
-<li>The access log is written to the file indicated by the <b>CustomLog</b> directive. It can be seen from studying the contents of this file that the machine accessing our web site is only identified by its IP address. Find out which directive of the <tt>http.conf</tt> must be changed in order for the machine name ("hostname") to appear in the access log instead of the IP address. Make the change and check that it works.</li>
+<li>The access log is written to the file indicated by the <b>CustomLog</b> directive. It can be seen from studying the contents of this file that the machine accessing our web site is only identified by its IP address. The directive must be changed in order for the machine name ("hostname") to appear in the access log instead of the IP address. Make the change and check that it works.</li>
 </ol>
 <h3>Content types in apache</h3>
 <p>As you would have seen on questions 2 and 3, the server tells us the MIME type (Content-Type) of the object that it sends back to us. To obtain the MIME type for a given file extension, the server consults the configuration file specified in the <b>TypesConfig</b> directive (in httpd.conf). If the file extension in question is not one of the ones figuring in this file, the server sends the default MIME type as specified in the <b>DefaultType</b> directive.</p>
