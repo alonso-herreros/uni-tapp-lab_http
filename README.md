@@ -1,9 +1,7 @@
 [English version] (https://gitlab.pervasive.it.uc3m.es/aptel/http/blob/master/README_EN.md)
 
-<h1>Aplicaciones Telemáticas: Servidores Web (HTTP)</h1>
+#Aplicaciones Telemáticas: Servidores Web (HTTP)
 
-<p></p>
-<blockquote>
 En esta práctica, configuraremos un servidor Web Apache version 2.X y probaremos su funcionamiento enviando peticiones HTTP y analizando las respuestas.
 En el laboratorio tenemos un servidor apache instalado en el directorio /usr/sbin/. Por defecto, Apache obtiene la información de configuración del fichero <tt>/etc/apache2/apache2.conf</tt>. 
 Nosotros, en cambio, utilizaremos nuestro propio fichero de configuración para probar distintas opciones y adaptarlo a nuestras necesidades.
@@ -12,7 +10,7 @@ En aula global disponéis de 2 ficheros que debéis descargar para la realizaci�
 El primero (<tt>apache2.conf</tt>) contiene directivas necesarias para poder lanzar el servidor y directivas específicas relacionadas con el comportamiento.
 El segundo fichero (<tt>mime.types</tt>) contiene la lista de tipos MIME relacionadas con el contenido que sirve el servidor. La estructura de este último fichero es muy sencilla: tipo/subtipo y la extensión asociada a dicho tipo.
 
-<h3>Configuración del servidor</h3>
+## Configuración del servidor
 Antes de ejecutar el servidor, necesitamos modificar varias directivas. Para obtener información detallada sobre cualquiera de ellas, 
 puedes consultar <a href="http://httpd.apache.org/docs/mod/directives.html">Directivas Apache</a>.
 <p></p>
@@ -20,6 +18,7 @@ puedes consultar <a href="http://httpd.apache.org/docs/mod/directives.html">Dire
 <li>
 <p>Prepara tu cuenta, descargando los archivos necesarios en ella y creando la siguiente estructura de directorios, donde <tt>d</tt> 
 indica que se trata de un directorio o carpeta y <tt>f</tt> de un fichero:</p>
+<blockquote>
 <pre>d-httpd                    (directorio raíz del servidor "<tt>ServerRoot</tt>")
 f--- apache2.conf
 f--- mime.types
@@ -32,36 +31,30 @@ d--- vhost2
 d    --- docs
 d    --- log
 </pre>
+</blockquote>
 </li>
-<li>A continuación, modificaremos ciertas directivas para que apunten a ficheros en nuestra cuenta y para determinar ciertos parámetros de ejecución. Abre <tt>apache2.conf</tt> y cambia:
+<li>A continuación, modificaremos ciertas directivas para que apunten a ficheros en nuestra cuenta y para determinar ciertos parámetros de ejecución. Abre <tt>apache2.conf</tt> y cambia las directivas:
 <ul>
 <li><b>ServerRoot</b>: ruta al directorio en el que se encuentran los ficheros de configuración necesarios para la correcta operación del servidor 
 (ruta absoluta al directorio <tt>httpd</tt> de vuestra cuenta).</li>
-<li><strong><tt>DocumentRoot</tt></strong>: apuntará a la ruta de la carpeta en la que se almacenan los documentos que servirá el servidor (<tt>defaultdocs</tt>). Si no empieza por "/" esta ruta será relativa a la indicada en <tt>"ServerRoot"</tt>, por tanto, podría únicamente indicar <tt>defaultdocs</tt>.</li>
-<li><strong><tt>ServerName</tt></strong></li>
-<li><strong><tt>LockFile</tt></strong></li>
-<li><strong><tt>PidFile</tt></strong></li>
-<li><strong><tt>ScoreBoardFile</tt></strong></li>
-<li><strong><tt>Listen</tt></strong></li>
-<li><strong><tt>ErrorLog</tt></strong></li>
-<li><strong><tt>CustomLog</tt></strong></li>
-<li><strong><tt>TypesConfig</tt></strong>: indicando la ruta donde se almacena <tt>mime.types</tt> en vuesta cuenta.</li>
+<li><strong><tt>ServerName</tt></strong>: nombre de la máquina donde está alojado el servidor.</li>
+<li><strong><tt>Listen</tt></strong>: indique como puerto 9xxx, donde xxx corresponde a los últimos 3 números de la dirección IP de la máquina.</li> 
 </ul>
-<p><strong>Nota:</strong> Se recomienda indicar una <strong>ruta absoluta</strong> en <tt>ServerRoot</tt> y rutas o nombres de ficheros <strong>relativos</strong> en el resto de directivas.</p>
+Otras directivas como <strong><tt>DocumentRoot</tt></strong>, <strong><tt>LockFile</tt></strong>, <strong><tt>PidFile</tt></strong>, <strong><tt>ScoreBoardFile</tt></strong>,
+<strong><tt>ErrorLog</tt></strong>, <strong><tt>CustomLog</tt></strong> y <strong><tt>TypesConfig</tt> indican nombers de directorios o ficheros (que crea el servidor)
+de forma relativa a la ruta especificada en <b><tt>ServerRoot</tt></b>.
 </li>
 
 <li>Crea una página web sencilla <tt>aptel.html</tt> en <tt>httpd/defaultdocs</tt>, por ejemplo:
-
-```
+<blockquote>
+<pre>
 <html>
-<head>
- <title>Página de inicio Aptel</title>
-</head>
 <body>
 ¡Hola mundo!
 </body>
 </html>
-```
+</pre>
+</blockquote>
 </li>
 
 <li>Ahora podemos <span style="font-weight: bold;">arrancar nuestro servidor</span> indicando el fichero de configuración que hemos adaptado. Se hace con el comando: 
