@@ -1,6 +1,6 @@
 [English version] (https://gitlab.pervasive.it.uc3m.es/aptel/http/blob/master/README_EN.md)
 
-#Aplicaciones Telemáticas: Servidores Web (HTTP)
+# Aplicaciones Telemáticas: Servidores Web (HTTP)
 
 En esta práctica, configuraremos un servidor Web Apache version 2.X y probaremos su funcionamiento enviando peticiones HTTP y analizando las respuestas.
 En el laboratorio tenemos un servidor apache instalado en el directorio /usr/sbin/. Por defecto, Apache obtiene la información de configuración del fichero <tt>/etc/apache2/apache2.conf</tt>. 
@@ -48,11 +48,11 @@ de forma relativa a la ruta especificada en <b><tt>ServerRoot</tt></b>.
 <li>Crea una página web sencilla <tt>aptel.html</tt> en <tt>httpd/defaultdocs</tt>, por ejemplo:
 <blockquote>
 <pre>
-<html>
-<body>
-¡Hola mundo!
-</body>
-</html>
+&lt;html>
+&lt;body>
+&iexcl;Hola mundo!
+&lt;/body>
+&lt;/html>
 </pre>
 </blockquote>
 </li>
@@ -179,7 +179,7 @@ sean automáticamente redirigidos a <tt>http://your_machine:your_port/new/</tt>.
 según el nombre de servidor que utilicemos para acceder a él. Este nombre se le envía con la cabecera Host de HTTP/1.1.</p>
 </li>
 
-<li>Crea dos nuevas páginas <tt>aptel.html</tt> (con mensajes “¡Hola mundo vhost1!”, y “¡Hola mundo vhost2!”, respectivamente) y 
+<li>Crea dos nuevas páginas <tt>aptel.html</tt> (con mensajes “&iexcl;Hola mundo vhost1!”, y “&iexcl;Hola mundo vhost2!”, respectivamente) y 
 cópialas a los directorios virtual hosts (al final del fichero <tt>apache2.conf</tt>). Haz pruebas enviando peticiones telnet cambiando la cabecera host.
 </li>
 </ol>
