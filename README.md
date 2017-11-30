@@ -1,5 +1,9 @@
 [English version] (https://gitlab.pervasive.it.uc3m.es/aptel/http/blob/master/README_EN.md)
 
+#Ficheros adicionales
+[apache2.conf](https://gitlab.pervasive.it.uc3m.es/aptel/http/blob/master/apache2.conf)
+[mime.types] (https://gitlab.pervasive.it.uc3m.es/aptel/http/blob/master/mime.types)
+
 # Aplicaciones Telemáticas: Servidores Web (HTTP)
 
 En esta práctica, configuraremos un servidor Web Apache version 2.4.X y probaremos su funcionamiento enviando peticiones HTTP y analizando las respuestas.
