@@ -22,7 +22,6 @@ The last one, <tt>mime.types</tt> contains a complete list of MIME types, which 
 <p>Set up your account. Download the files to your account and create the folowing directory/file structure:</p>
 <pre>d-httpd                    (this is your server root)
 f--- apache2.conf
-f--- httpd.conf
 f--- mime.types
 d--- defaultdocs
 d--- log
@@ -41,15 +40,11 @@ d    --- log
 <p>Open apache2.conf and change:</p>
 <ul>
 <li><b>ServerRoot</b>: indicates the directory in which files required for correct operation are to be found. Set it to point to a directory of your account (httpd).</li>
-<li><strong><tt>LockFile</tt></strong></li>
-<li><strong><tt>PidFile</tt></strong></li>
-<li><strong><tt>ScoreBoardFile</tt></strong></li>
-<li><strong><tt>User</tt></strong></li>
-<li><strong><tt>Listen</tt></strong></li>
-<li><strong><tt>ErrorLog</tt></strong></li>
-<li><strong><tt>CustomLog</tt></strong></li>
-<li><strong><tt>Include -- change the path of the last include (so it points to your account and the appropriate directory</tt></strong></li>
+<li><b>ServerName</b>: the domain name of the machine where the server is running
+<li><strong><tt>Listen</tt></strong></li>: port or ip and port where the server should listen at
 </ul>
+
+There are other directives that can be changed as  <strong><tt>LockFile</tt></strong>, <strong><tt>PidFile</tt></strong>, <strong><tt>ScoreBoardFile</tt></strong>, <strong><tt>User</tt></strong>, <strong><tt>ErrorLog</tt></strong>, <strong><tt>CustomLog</tt></strong>,<strong><tt>Include -- change the path of the last include (so it points to your account and the appropriate directory</tt></strong>.
 </li>
 <li>
 <p>Open httpd.conf and change:</p>
