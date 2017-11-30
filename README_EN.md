@@ -1,5 +1,11 @@
 # Telematic applications: Web Servers Assignment
+
+# Additional Files
+[apache2.conf](https://gitlab.pervasive.it.uc3m.es/aptel/http/blob/master/apache2.conf)
+
+[mime.types] (https://gitlab.pervasive.it.uc3m.es/aptel/http/blob/master/mime.types)
  
+
 ## Configuring a web server
 In this assignment, we will configure an <a href="http://httpd.apache.org/">Apache</a> web server version 2.4.X and test its behaviour by sending HTTP requests and studying the replies.
  
