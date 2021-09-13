@@ -1,9 +1,9 @@
 # Telematic applications: Web Servers Assignment
 
 # Additional Files
-[apache2.conf](https://gitlab.pervasive.it.uc3m.es/aptel/http/blob/master/apache2.conf)
+[apache2.conf](apache2.conf)
 
-[mime.types] (https://gitlab.pervasive.it.uc3m.es/aptel/http/blob/master/mime.types)
+[mime.types](mime.types)
  
 
 ## Configuring a web server
