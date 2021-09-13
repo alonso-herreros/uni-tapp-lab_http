@@ -3,7 +3,7 @@
 # Ficheros adicionales
 [apache2.conf](apache2.conf)
 
-[mime.types] (mime.types)
+[mime.types](mime.types)
 
 # Aplicaciones Telemáticas: Servidores Web (HTTP)
 
