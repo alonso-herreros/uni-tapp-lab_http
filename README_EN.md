@@ -131,11 +131,11 @@ If everithing is correct, execute:
  
  ## Optional part
  ### Redirections and Virtual hosts
- <p>The <b>Redirect</b> directive enables a client to be redirected from one URL to another.</p>
  <ol start="24">
+ <li><p>The <b>Redirect</b> directive enables a client to be redirected from one URL to another.</p>
+
+ <p>Use this directive to specify that browsers that visit the URL <tt>http://your_machine:your_port/old/</tt> are automatically redirected to <tt>http://your_machine:your_port/new/</tt>.</p></li>
  <li>
- <p>Use this directive to specify that browsers that visit the URL <tt>http://your_machine:your_port/old/</tt> are automatically redirected to <tt>http://your_machine:your_port/new/</tt>.</p>
- <p>The <b>&lt;VirtualHost&gt;</b> directive enables the web page sent by the server to depend on the name used to access it. This name is sent in the <tt>Host</tt> header of HTTP/1.1.</p>
- </li>
- <li>Create two new aptel.html pages (with the message Hello world vhost1, and with the message Hello world vhost2) and copy them to the virual hosts directories (look at the end of the httpd.conf file). Anwser the server with telnet and play with the host header!</li>
+ <p>The <a href="https://httpd.apache.org/docs/2.4/vhosts/examples.html"><b>&lt;VirtualHost&gt;</b></a> directive enables the web page sent by the server to depend on the name used to access it. This name is sent in the <tt>Host</tt> header of HTTP/1.1.</p>
+  <p>Create two new aptel.html pages (with the message Hello world vhost1, and with the message Hello world vhost2) and copy them to the virual hosts directories (look at the end of the httpd.conf file). Anwser the server with telnet and play with the host header!</p></li>
 </ol>
