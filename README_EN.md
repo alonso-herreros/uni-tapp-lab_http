@@ -115,7 +115,7 @@ If everithing is correct, execute:
  <pre>&lt;Directory DOCUMENT_ROOT/internal&gt;
      AuthType Basic
      AuthName "Computer Networks"
-     AuthUserFile DOCUMENT_ROOT/passwd
+     AuthUserFile SERVER_ROOT/passwd
      Require user aptel
  &lt;/Directory&gt;
  </pre>
@@ -124,7 +124,7 @@ If everithing is correct, execute:
  <p>If you experience any problem try moving the directoy directive inside the Virtualhost 127.0.0.1:8181 directive</p>
  <ol start="20">
  <li>Create the directory <tt>DOCUMENT_ROOT/internal</tt> and copy the file <tt>aptel.html</tt> to it. What happens now when you try to access the URL <tt>http://your_machine:your_port/internal</tt> in a browser?</li>
- <li>We will need to generate a password file (<tt>DOCUMENT_ROOT/passwd</tt>). To do so, we can use the <tt>htpasswd</tt> utility. Use <tt>htpasswd</tt> to create a file with a user <tt>aptel</tt> and password <tt>redes</tt>. Try entering with this user and password in a web browser.</li>
+ <li>We will need to generate a password file (<tt>SERVER_ROOT/passwd</tt>). To do so, we can use the <tt>htpasswd</tt> utility. Use <tt>htpasswd</tt> to create a file with a user <tt>aptel</tt> and password <tt>redes</tt>. Try entering with this user and password in a web browser.</li>
  <li>Now try it using telnet. What is the name of the realm? Where does the server obtain it from? Send a second request to gain access to the page. You may use the converter to base64 that is available at <a href="http://www.webtoolkit.info/demo/javascript-base64">http://www.webtoolkit.info/demo/javascript-base64</a> (see input boxes below)</li>
  
  </ol>
