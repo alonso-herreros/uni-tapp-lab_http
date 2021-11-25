@@ -173,11 +173,10 @@ Manda una segunda petición para conseguir acceder a la página. Puedes usar el 
 <h3>Parte Opcional: Redirección y "Hosts" Virtuales</h3>
 
 <ol start="18">
-<li>La directiva <b><tt>Redirect</tt></b> permite redireccionar a un cliente de una URL a otra. Usa esta directiva para hacer que los navegadores que visiten la URL <tt>http://your_machine:your_port/old/</tt>
-sean automáticamente redirigidos a <tt>http://your_machine:your_port/new/</tt>.</li>
+<li><p>La directiva <b><tt>Redirect</tt></b> permite redireccionar a un cliente de una URL a otra. Usa esta directiva para hacer que los navegadores que visiten la URL <tt>http://your_machine:your_port/old/</tt>
+sean automáticamente redirigidos a <tt>http://your_machine:your_port/new/</tt></p>.</li>
 
-<li><p>Para esta parte se requiere que modifique previamente las directivas <strong>within the <tt>VirtualHost</tt> directive</strong>: <tt>DocumentRoot</tt>, <tt>ServerAdmin</tt> y <tt>ServerName</tt>.</li>La directiva <b>&lt;VirtualHost&gt;</b> permite hacer que el servidor responda distintas páginas web, 
-según el nombre de servidor que utilicemos para acceder a él. Este nombre se le envía con la cabecera Host de HTTP/1.1.</p>
+<li><p>Para esta parte se requiere que modifique previamente las directivas <strong>within the <a href="https://httpd.apache.org/docs/2.4/vhosts/examples.html"><tt>VirtualHost</tt></a> directive</strong>: <tt>DocumentRoot</tt>, <tt>ServerAdmin</tt> y <tt>ServerName</tt>.</li>La directiva <b>&lt;VirtualHost&gt;</b> permite hacer que el servidor responda distintas páginas web,  según el nombre de servidor que utilicemos para acceder a él. Este nombre se le envía con la cabecera Host de HTTP/1.1.</p>
 
 <p>Crea dos nuevas páginas <tt>aptel.html</tt> (con mensajes “&iexcl;Hola mundo vhost1!”, y “&iexcl;Hola mundo vhost2!”, respectivamente) y 
 cópialas a los directorios virtual hosts (al final del fichero <tt>apache2.conf</tt>). Haz pruebas enviando peticiones telnet cambiando la cabecera host.</p>
