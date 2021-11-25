@@ -150,7 +150,7 @@ Se puede cambiar la configuración para un directorio concreto mediante la direc
 &lt;Directory DOCUMENT_ROOT/internal>
     AuthType Basic
     AuthName "Telematic Applications"
-    AuthUserFile DOCUMENT_ROOT/passwd
+    AuthUserFile SERVERROOT/passwd
     Require user aptel
 &lt;/Directory>
 </pre>
