@@ -37,8 +37,8 @@ d    --- log
 <p>Open apache2.conf and change:</p>
 <ul>
 <li><b>ServerRoot</b>: indicates the directory in which files required for correct operation are to be found. Set it to point to a directory of your account (httpd).</li>
-<li><b>ServerName</b>: the domain name of the machine where the server is running
-<li><strong><tt>Listen</tt></strong></li>: port or ip and port where the server should listen at
+<li><b>ServerName</b>: the domain name of the machine where the server is running.</li>
+<li><b>Listen</b>: indicate as port 9xxx, where xxx corresponds to the last 3 numbers of the machine's IP address.</li>
 </ul>
 
 There are other directives that can be changed as  <strong><tt>LockFile</tt></strong>, <strong><tt>PidFile</tt></strong>, <strong><tt>ScoreBoardFile</tt></strong>, <strong><tt>User</tt></strong>, <strong><tt>ErrorLog</tt></strong>, <strong><tt>CustomLog</tt></strong>,<strong><tt>
