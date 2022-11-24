@@ -11,7 +11,7 @@ In this assignment, we will configure an <a href="http://httpd.apache.org/">Apac
  
 A web server of that version is installed in the directory <tt>/usr/sbin/apache</tt> on the lab computers. By default, Apache obtains the configuration information from the file <tt>/etc/apache2/apache2.conf</tt>. However the configuration stored in that directory does not fit into our purposes and cannot be launched without root permissions. So we're going to make our own!!!
  
-In aula global you can find three files to be downloaded (apache2.conf, httpd.conf and mime.types). The first one (apache2.conf) contains several general directives
+In the #Additional Files section (here), you can find three files to be downloaded (apache2.conf, httpd.conf and mime.types). The first one (apache2.conf) contains several general directives
 that should be present to allow the server to run. At the end of this first file an include directive loads the second (httpd.conf). 
 That second file (httpd.conf) contains directives specific to the content/behaviour of your server. We will modify serveral directives. 
 If you need to more information (about any directive) have a look to <a href="http://httpd.apache.org/docs/mod/directives.html">http://httpd.apache.org/docs/mod/directives.html</a>.
@@ -25,7 +25,6 @@ f--- apache2.conf
 f--- mime.types
 d--- defaultdocs
 d--- log
-f--- mime.types
 d--- vhost1
 d    --- doc
 d    --- log
