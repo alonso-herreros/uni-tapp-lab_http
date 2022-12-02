@@ -66,11 +66,11 @@ If everithing is correct, execute:
 <li>it can show the contents of a default HTML file</li>
 </ul>
 </li>
-<li>To obtain the latter behaviour, we use the <b>DirectoryIndex</b> directive to specify the name of the default file to be used in such cases. (usually <tt>index.html</tt>). Notice that in the <tt>apache2.conf</tt> file you are using, this directive is already defined and, for the moment, we will not need to alter it. <br>What pages can you visit? Why?</li>
+<p>To obtain the latter behaviour, we use the <b>DirectoryIndex</b> directive to specify the name of the default file to be used in such cases (usually <tt>index.html</tt>). Notice that in the <tt>apache2.conf</tt> file you are using, this directive is already defined and, for the moment, we will not need to alter it. <br>What pages can you visit? Why?</p>
 </ol>
 <h3>HTTP Request reply</h3>
 <p>Once you have followed the previous steps, try the following:</p>
-<ol start="7">
+<ol start="6">
 <li>Do the previous requests <tt>http://your_machine:your_port/aptel.html</tt>? And at <tt>http://your_machine:your_port/</tt> via telnet on the corresponding port. Send the requests via HTTP/0.9 y HTTP/1.0. What response headers do you obtain?</li>
 <li>Now send the request via HTTP/1.1. What header must you include in the request? Does the server close the connection immediately? What must the request include for it to do so? Test this.</li>
 <li>Even if you do not send anything in the HTTP/1.1 request to tell the server to close the connection immediately, it still does so after a certain length of time if there is no activity. Measure this time. Check that it coincides with the specified <b>KeepAliveTimeout</b> directive.</li>
