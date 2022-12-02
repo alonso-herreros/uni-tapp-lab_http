@@ -95,15 +95,16 @@ If everithing is correct, execute:
 </ol>
 <h3>Content types in apache</h3>
 <p>As you would have seen on questions 2 and 3, the server tells us the MIME type (Content-Type) of the object that it sends back to us. To obtain the MIME type for a given file extension, the server consults the configuration file specified in the <b>TypesConfig</b> directive (in httpd.conf). If the file extension in question is not one of the ones figuring in this file, the server sends the default MIME type as specified in the <b>DefaultType</b> directive.</p>
-<ol start="17">
+<ol start="16">
 <li>Copy the file <tt>aptel.html</tt> to <tt>test.aptel</tt> and issue the request <tt>http://your_machine:your_port/test.aptel</tt> with a browser and with telnet. How is the file presented in the browser? What MIME type is the file sent with? Why?</li>
 <li>Change the configuration (in mime.types --add a line) so that when the extension is <tt>aptel</tt> the MIME type is set to <tt>application/x-type-aptel</tt>. Check that it works correctly. What does the web browser do now?</li>
 </ol>
 
   ## Directory management and security
- <p>The configuration can be changed for a given directory using the <b>&lt;Directory&gt;</b> directive. for example, add the following code at the end of the <tt>httpd.conf</tt> file (substituting <tt>DOCUMENT_ROOT</tt> for the full path of the root directory of your web site):</p>
- <ol start="19">
- <li>
+ <p>The configuration can be changed for a given directory using the <b>&lt;Directory&gt;</b> directive, following the example:</p>
+  <ol start="18">
+  <li><p>Add the following code at the end of the <tt>httpd.conf</tt> file (substituting <tt>DOCUMENT_ROOT</tt> for the full path of the root directory of your web site):</p>
+
  <pre>&lt;Directory /var/home/lab/asignatura/labro/httpd/defaultdocs/&gt;
      Options Indexes Includes FollowSymLinks MultiViews
      AllowOverride None
@@ -122,7 +123,7 @@ If everithing is correct, execute:
  </li>
  </ol>
  <p>If you experience any problem try moving the directoy directive inside the Virtualhost 127.0.0.1:8181 directive</p>
- <ol start="20">
+ <ol start="19">
  <li>Create the directory <tt>DOCUMENT_ROOT/internal</tt> and copy the file <tt>aptel.html</tt> to it. What happens now when you try to access the URL <tt>http://your_machine:your_port/internal</tt> in a browser?</li>
  <li>We will need to generate a password file (<tt>SERVER_ROOT/passwd</tt>). To do so, we can use the <tt>htpasswd</tt> utility. Use <tt>htpasswd</tt> to create a file with a user <tt>aptel</tt> and password <tt>redes</tt>. Try entering with this user and password in a web browser.</li>
  <li>Now try it using telnet. What is the name of the realm? Where does the server obtain it from? Send a second request to gain access to the page. You may use the converter to base64 that is available at <a href="http://www.webtoolkit.info/demo/javascript-base64">http://www.webtoolkit.info/demo/javascript-base64</a> or <a href="https://www.base64encode.org/">https://www.base64encode.org/</a>.</li>
@@ -131,7 +132,7 @@ If everithing is correct, execute:
  
  ## Optional part
  ### Redirections and Virtual hosts
- <ol start="24">
+ <ol start="23">
  <li><p>The <b>Redirect</b> directive enables a client to be redirected from one URL to another.</p>
 
  <p>Use this directive to specify that browsers that visit the URL <tt>http://your_machine:your_port/old/</tt> are automatically redirected to <tt>http://your_machine:your_port/new/</tt>.</p></li>
