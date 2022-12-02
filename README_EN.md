@@ -101,7 +101,7 @@ If everithing is correct, execute:
 </ol>
 
   ## Directory management and security
- <p>The configuration can be changed for a given directory using the <b>&lt;Directory&gt;</b> directive, following the example:</p>
+ <p>The configuration can be changed for a given directory using the <b>&lt;Directory&gt;</b> directive.</p>
   <ol start="18">
   <li><p>Add the following code at the end of the <tt>httpd.conf</tt> file (substituting <tt>DOCUMENT_ROOT</tt> for the full path of the root directory of your web site):</p>
 
