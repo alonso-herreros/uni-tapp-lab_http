@@ -132,7 +132,7 @@ If everithing is correct, execute:
  
  ## Optional part
  ### Redirections and Virtual hosts
- <ol start="23">
+ <ol start="22">
  <li><p>The <b>Redirect</b> directive enables a client to be redirected from one URL to another.</p>
 
  <p>Use this directive to specify that browsers that visit the URL <tt>http://your_machine:your_port/old/</tt> are automatically redirected to <tt>http://your_machine:your_port/new/</tt>.</p></li>
