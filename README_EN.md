@@ -66,6 +66,7 @@ If everithing is correct, execute:
 <li>it can show the contents of a default HTML file</li>
 </ul>
 </li>
+<br />
 <p>To obtain the latter behaviour, we use the <b>DirectoryIndex</b> directive to specify the name of the default file to be used in such cases (usually <tt>index.html</tt>). Notice that in the <tt>apache2.conf</tt> file you are using, this directive is already defined and, for the moment, we will not need to alter it. <br>What pages can you visit? Why?</p>
 </ol>
 <h3>HTTP Request reply</h3>
@@ -77,7 +78,7 @@ If everithing is correct, execute:
 <li>Check again the <tt>apache2.conf (or httpd-default.conf)</tt> file and see what <b>KeepAlive</b> and <b>MaxKeepAliveRequests</b> directives are for.</li>
 </ol>
 <h3>Processes and resources in the web server</h3>
-<ol start="11">
+<ol start="10">
 <li>
 <p>Use the <tt>ps -x</tt> command to find out how many server processes are executing (piping the output to a grep will make the visualization easier). This number can be controlled with the <b>StartServers</b> directive. The server initially starts this number of child processes to service requests, though it also dynamically starts and stops new child processes as needed (the maximum number is controlled with the <b>MaxClients</b> directive; see also <b>MinSpareServers</b> y <b>MaxSpareServers</b>, all in <tt>apache2.conf or httpd-mpm.conf</tt> file).</p>
 <p>Remember that configuration changes, are only applied if you stop and restart the server (or reload the config file).</p>
