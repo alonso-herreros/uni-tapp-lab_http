@@ -89,7 +89,7 @@ If everithing is correct, execute:
 </ol>
 <h3><a name="errors"></a>Apache Logs</h3>
 <p>The Apache server generates two log files containing interesting and useful information: the error log and the access log.</p>
-<ol start="15">
+<ol start="14">
 <li>The error log is written to the file indicated in the <b>ErrorLog</b> directive. The level of detail of this log can be varied using the <b>LogLevel</b> directive. Study the contents of the error log, then increase the level of detail to "debug", restart the server and check that, for the same type of requests, more information is logged.</li>
 <li>The access log is written to the file indicated by the <b>CustomLog</b> directive. It can be seen from studying the contents of this file that the machine accessing our web site is only identified by its IP address. Find out which directive of the <tt>http.conf</tt> must be changed in order for the machine name ("hostname") to appear in the access log instead of the IP address. Make the change and check that it works.</li>
 </ol>
