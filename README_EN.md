@@ -1,142 +1,180 @@
-# Telematic applications: Web Servers Assignment
-
 # Additional Files
 [apache2.conf](apache2.conf)
 
 [mime.types](mime.types)
- 
 
-## Configuring a web server
-In this assignment, we will configure an <a href="http://httpd.apache.org/">Apache</a> web server version 2.4.X and test its behaviour by sending HTTP requests and studying the replies.
- 
-A web server of that version is installed in the directory <tt>/usr/sbin/apache</tt> on the lab computers. By default, Apache obtains the configuration information from the file <tt>/etc/apache2/apache2.conf</tt>. However the configuration stored in that directory does not fit into our purposes and cannot be launched without root permissions. So we're going to make our own!!!
- 
-In the #Additional Files section (here), you can find three files to be downloaded (apache2.conf, httpd.conf and mime.types). The first one (apache2.conf) contains several general directives
-that should be present to allow the server to run. At the end of this first file an include directive loads the second (httpd.conf). 
-That second file (httpd.conf) contains directives specific to the content/behaviour of your server. We will modify serveral directives. 
-If you need to more information (about any directive) have a look to <a href="http://httpd.apache.org/docs/mod/directives.html">http://httpd.apache.org/docs/mod/directives.html</a>.
-The last one, <tt>mime.types</tt> contains a complete list of MIME types, which are a way to convey the document type information. The structure is very simple; it contains type/subtype and the file extension associated to this type.
+# Telematic Applications: Web Servers (HTTP)
 
+In this assigment, we will configure an Apache Web Server version 2.4.X and test its functionality by sending HTTP requests and analyzing the responses.
+In the lab, we have an Apache server installed in the /usr/sbin/ directory. By default, Apache retrieves configuration information from the file `/etc/apache2/apache2.conf`.
+However, we will use our own configuration file to test different options and adapt it to our needs.
+
+In the global classroom, you have two files to download for the practice (`apache2.conf` and `mime.types`).
+The first one (`apache2.conf`) contains directives necessary to launch the server and specific directives related to its behavior.
+The second file (`mime.types`) contains the list of MIME types related to the content served by the server. The structure of this file is simple: type/subtype and the extension associated with that type.
+
+## Server Configuration
+Before running the server, we need to modify several directives. For detailed information on any of them, you can refer to [Apache Directives](http://httpd.apache.org/docs/mod/directives.html).
+<p></p>
 <ol>
 <li>
-<p>Set up your account. Download the files to your account and create the folowing directory/file structure:</p>
-<pre>d-httpd                    (this is your server root)
+<p>Prepare your account by downloading the necessary files into it and creating the following directory structure, where <tt>d</tt>
+indicates a directory or folder, and <tt>f</tt> indicates a file:</p>
+<blockquote>
+<pre>d-httpd                    (root directory of the server "<tt>ServerRoot</tt>")
 f--- apache2.conf
 f--- mime.types
 d--- defaultdocs
 d--- log
 d--- vhost1
-d    --- doc
+d    --- docs
 d    --- log
 d--- vhost2
-d    --- doc
+d    --- docs
 d    --- log
 </pre>
-</li>
-<li>First, we must modify certain directives so that they point to files in our account and to set certain execution parameters:
-<p>Open apache2.conf and change:</p>
-<ul>
-<li><b>ServerRoot</b>: indicates the directory in which files required for correct operation are to be found. Set it to point to a directory of your account (httpd).</li>
-<li><b>ServerName</b>: the domain name of the machine where the server is running.</li>
-<li><b>Listen</b>: indicate as port 9xxx, where xxx corresponds to the last 3 numbers of the machine's IP address.</li>
-</ul>
-
-There are other directives that can be changed as  <strong><tt>LockFile</tt></strong>, <strong><tt>PidFile</tt></strong>, <strong><tt>ScoreBoardFile</tt></strong>, <strong><tt>User</tt></strong>, <strong><tt>ErrorLog</tt></strong>, <strong><tt>CustomLog</tt></strong>,<strong><tt>
+</blockquote>
 </li>
 
-<p>Modify the <b>DocumentRoot</b> directive to specify the directory that contains the documents to be shown.</p>
-</li>
-<li>
-<p>Create a very simple web page <tt>aptel.html</tt> in httpd/defaultdocs, for example:</p>
-<blockquote>&lt;html&gt;<br> &lt;body&gt;<br> Hello World from default host<br> &lt;/body&gt;<br> &lt;/html&gt;</blockquote>
-</li>
-<li>Now we can <span style="font-weight: bold;">start our apache server</span>, do it indicating the configuration file we have just modified. First test the configuration and fix any defect:
-<pre>     /usr/sbin/apache2 -f PATH/apache2.conf -t
-</pre>
-If everithing is correct, execute:
-<pre>     /usr/sbin/apache2 -f PATH/apache2.conf
-</pre>
+<li>Next, we will modify certain directives to point to files in our account and to determine certain execution parameters. Open `apache2.conf` and change the directives:
 <ul>
-<li>Verify the server has started -&gt; Use command <tt>ps</tt> or open the <tt>apache2.pid</tt> (if the file does not exist, the server is not runiing -- have a look to the logs).</li>
+<li><b>ServerRoot</b>: path to the directory where the necessary configuration files for the correct operation of the server are located
+(absolute path to the <tt>httpd</tt> directory in your account).</li>
+<li><strong><tt>ServerName</tt></strong>: name of the machine where the server is hosted.</li>
+<li><strong><tt>Listen</tt></strong>: specify as port 9xxx, where xxx corresponds to the last 3 numbers of the machine's IP address.</li>
 </ul>
+Other directives like <strong><tt>DocumentRoot</tt></strong>, <strong><tt>LockFile</tt></strong>, <strong><tt>PidFile</tt></strong>, <strong><tt>ScoreBoardFile</tt></strong>,
+<strong><tt>ErrorLog</tt></strong>, <strong><tt>CustomLog</tt></strong>, and <strong><tt>TypesConfig</tt></strong> indicate directory or file names (created by the server)
+relative to the path specified in <b><tt>ServerRoot</tt></b>.
 </li>
-<li>Verify you can access the page just created (aptel.html) pointing your browser to <tt>http://servername:port/aptel.html</tt>. Try also to access using simply <tt>http://servername:port/</tt>. If there is an error, investigate the error file you previously defined in the directive <tt>ErrorLog</tt> (<a href="#errors">see also here</a>). <span style="font-weight: bold;">Note</span>: If the error is due to permissions, verify the characteristics allowed and disallowed in the <a href="https://httpd.apache.org/docs/2.0/mod/core.html#directory">directive <tt>&lt;Directory&gt;... &lt;/Directory&gt;</tt></a>. Which should you comment? Do the necessary changes restart the server and revisit the page.<br> Take into account that if we do not specify the HTML page we want to retrieve, the server may act in two different ways:
+
+<li>Create a simple web page <tt>aptel.html</tt> in <tt>httpd/defaultdocs</tt>, for example:
+<blockquote>
+<pre>
+&lt;html>
+&lt;body>
+¡Hola mundo!
+&lt;/body>
+&lt;/html>
+</pre>
+</blockquote>
+</li>
+
+<li>Now we can <span style="font-weight: bold;">start our server</span> by specifying the adapted configuration file. Use the command:
+<pre>/usr/sbin/apache2 -f $FULL_PATH/apache2.conf</pre>
+
+<p>Verify that the server is running: use the <tt>ps</tt> command or open the <tt>apache2.pid</tt> file
+(if this file does not exist, the server is not running—check the logs to detect the problem).</p>
+</li>
+
+<li>Access the newly created page (aptel.html) through the browser at the URL <tt>http://servername:port/aptel.html</tt>.
+Also, try accessing it using simply <tt>http://servername:port/</tt>.
+
+<p>Note that if we do not specify the HTML page we want to access, the server can act in two ways:</p>
 <ul>
-<li>It can can either display a listing of the directory (not recommendable), or</li>
-<li>it can show the contents of a default HTML file</li>
+<li>Showing a list of directories (not recommended), or</li>
+<li>Displaying a default HTML file.</li>
 </ul>
+
+<p>For the second behavior, the <b><tt>DirectoryIndex</tt></b> directive is used to specify the name of the default file.
+Make sure this directive is already defined and is typically <tt>index.html</tt>. For now, do not modify this directive.</p>
+
+<p><strong>Note:</strong> If there is an error, investigate what is happening by accessing the file configured in the <tt>ErrorLog</tt> directive.</p>
 </li>
-<br />
-<p>To obtain the latter behaviour, we use the <b>DirectoryIndex</b> directive to specify the name of the default file to be used in such cases (usually <tt>index.html</tt>). Notice that in the <tt>apache2.conf</tt> file you are using, this directive is already defined and, for the moment, we will not need to alter it. <br>What pages can you visit? Why?</p>
 </ol>
-<h3>HTTP Request reply</h3>
-<p>Once you have followed the previous steps, try the following:</p>
+
+<h3>HTTP Requests and Responses</h3>
+Once we have verified the operation of our server using the browser as a client, let's use a <tt>telnet</tt> client.
+
 <ol start="6">
-<li>Do the previous requests <tt>http://your_machine:your_port/aptel.html</tt>? And at <tt>http://your_machine:your_port/</tt> via telnet on the corresponding port. Send the requests via HTTP/0.9 y HTTP/1.0. What response headers do you obtain?</li>
-<li>Now send the request via HTTP/1.1. What header must you include in the request? Does the server close the connection immediately? What must the request include for it to do so? Test this.</li>
-<li>Even if you do not send anything in the HTTP/1.1 request to tell the server to close the connection immediately, it still does so after a certain length of time if there is no activity. Measure this time. Check that it coincides with the specified <b>KeepAliveTimeout</b> directive.</li>
-<li>Check again the <tt>apache2.conf (or httpd-default.conf)</tt> file and see what <b>KeepAlive</b> and <b>MaxKeepAliveRequests</b> directives are for.</li>
+<li>Make the requests made earlier with the browser <tt>http://your_machine:your_port/aptel.html</tt> and
+<tt>http://your_machine:your_port/</tt> using <tt>telnet</tt>. Send requests using HTTP/0.9 and HTTP/1.0. What responses and headers do you get?</li>
+
+<li>Repeat the requests using HTTP/1.1. What header should you include in the request? Does the server immediately close the connection?
+What should be included in the request for it to do so? Test it.</li>
+
+<li>Even if nothing is sent in the HTTP/1.1 request to immediately close the connection, the server does so after a period of inactivity.
+Measure how long this time is and check that it matches what is specified in the <b><tt>KeepAliveTimeout</tt></b> directive.</li>
+
+<li>Look at the <tt>apache2.conf</tt> file and explain the purpose of the <b><tt>KeepAlive</tt></b> and <b><tt>MaxKeepAliveRequests</tt></b> directives.</li>
 </ol>
-<h3>Processes and resources in the web server</h3>
+
+<h3>Processes and Resources in the Web Server</h3>
 <ol start="10">
-<li>
-<p>Use the <tt>ps -x</tt> command to find out how many server processes are executing (piping the output to a grep will make the visualization easier). This number can be controlled with the <b>StartServers</b> directive. The server initially starts this number of child processes to service requests, though it also dynamically starts and stops new child processes as needed (the maximum number is controlled with the <b>MaxClients</b> directive; see also <b>MinSpareServers</b> y <b>MaxSpareServers</b>, all in <tt>apache2.conf or httpd-mpm.conf</tt> file).</p>
-<p>Remember that configuration changes, are only applied if you stop and restart the server (or reload the config file).</p>
+<li>Check how many processes are running. To do this, run the command <tt>ps -x</tt>.
+
+<p>This number can be controlled with the <tt>StartServers</tt> directive. The server initially starts this number of child processes to handle traffic,
+although it starts and stops new child processes dynamically as needed (the maximum number is controlled by the <tt>MaxClients</tt> directive,
+also see <tt>MinSpareServers</tt> and <tt>MaxSpareServers</tt>).</p>
+
+<p>Modify the configuration file to start by default 8 child processes.</p>
+
+<p><strong>Note:</strong> Remember that changes to the server will take effect once it is restarted. To stop the server, use the <tt>-k stop</tt>
+option of <tt>/usr/sbin/apache2...</tt> or the <tt>kill</tt> command along with the process number.
 </li>
-<li>Stop the server using option <tt>-k stop</tt> of /usr/sbin/apache2, or the <tt>kill</tt> command together with the number of the process that is stored in the file specified in the <b>PidFile</b> directive.</li>
-<li>Modify the file <tt>apache2.conf</tt> so that by default it starts 8 child processes.</li>
-<li>Modify also httpd.conf that <tt>aptel.html</tt> is sent by default (which directive are you using?). You may also change the value of other directives presented in the above sections if you so wish. Restart the server and check that the changes have taken effect.</li>
-</ol>
-<h3><a name="errors"></a>Apache Logs</h3>
-<p>The Apache server generates two log files containing interesting and useful information: the error log and the access log.</p>
-<ol start="14">
-<li>The error log is written to the file indicated in the <b>ErrorLog</b> directive. The level of detail of this log can be varied using the <b>LogLevel</b> directive. Study the contents of the error log, then increase the level of detail to "debug", restart the server and check that, for the same type of requests, more information is logged.</li>
-<li>The access log is written to the file indicated by the <b>CustomLog</b> directive. It can be seen from studying the contents of this file that the machine accessing our web site is only identified by its IP address. Find out which directive of the <tt>http.conf</tt> must be changed in order for the machine name ("hostname") to appear in the access log instead of the IP address. Make the change and check that it works.</li>
-</ol>
-<h3>Content types in apache</h3>
-<p>As you would have seen on questions 2 and 3, the server tells us the MIME type (Content-Type) of the object that it sends back to us. To obtain the MIME type for a given file extension, the server consults the configuration file specified in the <b>TypesConfig</b> directive (in httpd.conf). If the file extension in question is not one of the ones figuring in this file, the server sends the default MIME type as specified in the <b>DefaultType</b> directive.</p>
-<ol start="16">
-<li>Copy the file <tt>aptel.html</tt> to <tt>test.aptel</tt> and issue the request <tt>http://your_machine:your_port/test.aptel</tt> with a browser and with telnet. How is the file presented in the browser? What MIME type is the file sent with? Why?</li>
-<li>Change the configuration (in mime.types --add a line) so that when the extension is <tt>aptel</tt> the MIME type is set to <tt>application/x-type-aptel</tt>. Check that it works correctly. What does the web browser do now?</li>
 </ol>
 
-  ## Directory management and security
- <p>The configuration can be changed for a given directory using the <b>&lt;Directory&gt;</b> directive.</p>
-  <ol start="18">
-  <li><p>Add the following code at the end of the <tt>httpd.conf</tt> file (substituting <tt>DOCUMENT_ROOT</tt> for the full path of the root directory of your web site):</p>
+<h3>Logs Management</h3>
+Apache server generates interesting logs about its operation. On one hand, the error log and on the other, the access log.
+<ol start="11">
+<li>The error log is in the file indicated by the <b><tt>ErrorLog</tt></b> directive.
+The <b><tt>LogLevel</tt></b> directive can vary the level of detail in the log.
+Examine the error log file and increase the level of detail to "debug", restart the server, and check how, for the same type of requests,
+a greater number of records is stored.</li>
 
- <pre>&lt;Directory /var/home/lab/asignatura/labro/httpd/defaultdocs/&gt;
-     Options Indexes Includes FollowSymLinks MultiViews
-     AllowOverride None
-     Order allow,deny
-     Allow from all
- &lt;/Directory&gt;
- </pre>
- <p>in httpd.conf to add security as follows</p>
- <pre>&lt;Directory DOCUMENT_ROOT/internal&gt;
-     AuthType Basic
-     AuthName "Computer Networks"
-     AuthUserFile SERVER_ROOT/passwd
-     Require user aptel
- &lt;/Directory&gt;
- </pre>
- </li>
- </ol>
- <p>If you experience any problem try moving the directoy directive inside the Virtualhost 127.0.0.1:8181 directive</p>
- <ol start="19">
- <li>Create the directory <tt>DOCUMENT_ROOT/internal</tt> and copy the file <tt>aptel.html</tt> to it. What happens now when you try to access the URL <tt>http://your_machine:your_port/internal</tt> in a browser?</li>
- <li>We will need to generate a password file (<tt>SERVER_ROOT/passwd</tt>). To do so, we can use the <tt>htpasswd</tt> utility. Use <tt>htpasswd</tt> to create a file with a user <tt>aptel</tt> and password <tt>redes</tt>. Try entering with this user and password in a web browser.</li>
- <li>Now try it using telnet. What is the name of the realm? Where does the server obtain it from? Send a second request to gain access to the page. You may use the converter to base64 that is available at <a href="http://www.webtoolkit.info/demo/javascript-base64">http://www.webtoolkit.info/demo/javascript-base64</a> or <a href="https://www.base64encode.org/">https://www.base64encode.org/</a>.</li>
- 
- </ol>
- 
- ## Optional part
- ### Redirections and Virtual hosts
- <ol start="22">
- <li><p>The <b>Redirect</b> directive enables a client to be redirected from one URL to another.</p>
+<li>The <b><tt>CustomLog</tt></b> directive indicates the file where access to our web will be recorded.
+Examine the access log file. As you can see, machines are identified only by their IP. Find out which <tt>apache2.conf</tt> directive you need to change
+to ensure that the access log displays the machine's name ("hostname") instead of the IP. Make the change and verify that it works.</li>
+</ol>
 
- <p>Use this directive to specify that browsers that visit the URL <tt>http://your_machine:your_port/old/</tt> are automatically redirected to <tt>http://your_machine:your_port/new/</tt>.</p></li>
- <li>
- <p>The <a href="https://httpd.apache.org/docs/2.4/vhosts/examples.html"><b>&lt;VirtualHost&gt;</b></a> directive enables the web page sent by the server to depend on the name used to access it. This name is sent in the <tt>Host</tt> header of HTTP/1.1.</p>
-  <p>Create two new aptel.html pages (with the message Hello world vhost1, and with the message Hello world vhost2) and copy them to the virual hosts directories (look at the end of the httpd.conf file). Anwser the server with telnet and play with the host header!</p></li>
+<h3>Content Types in Apache</h3>
+As you may have seen when making the queries from questions 6 and 7, the server tells us the MIME type (Content-Type) of the object it sends.
+To know the MIME type of an object, check its extension in the file indicated in the <tt>TypesConfig</tt> directive.
+<ol start="13">
+<li>Create a copy of the <tt>aptel.html</tt> file with the name <tt>test.aptel</tt> and change the directive so that <tt>test.aptel</tt> is the default file sent.
+Make requests to <tt>http://your_machine:your_port/test.aptel</tt> with a browser and with telnet. How do you see the file in the browser? What MIME type is the file sent with? Why?</li>
+
+<li>Change the configuration so that when the extension is "aptel," it returns the MIME type <tt>application/x-type-aptel</tt>.
+Check that it works correctly. What does the web browser do now? Test with different browsers, e.g., Chrome and Firefox.</li>
+</ol>
+
+<h3>Directory Management and Security</h3>
+The configuration for a specific directory can be changed using the <tt>&lt;Directory&gt;</tt> directive. For example, add the following code at the end of the apache2.conf file
+(replacing <tt>DOCUMENT_ROOT</tt> with the full path to the appropriate directory according to your web server configuration):
+<blockquote>
+<pre>
+&lt;Directory DOCUMENT_ROOT/internal>
+    AuthType Basic
+    AuthName "Telematic Applications"
+    AuthUserFile SERVER_ROOT/passwd
+    Require user aptel
+&lt;/Directory>
+</pre>
+</blockquote>
+<ol start="15">
+<li>Create the <tt>DOCUMENT_ROOT/internal</tt> directory (within your folder specified in the <tt>DocumentRoot</tt> directive, <tt>defaultdocs</tt>) and copy the <tt>aptel.html</tt> file into it. Remember to add this filename to the default files that are sent.
+What happens now when you try to access the URL <tt>http://your_machine:your_port/internal</tt> with a browser?
+
+<p><strong>Note:</strong> You can add a small text (for example, change the message to ¡Hola Mundo interno!) to the file if you want to differentiate it.</p>
+</li>
+
+<li>You will need to generate the password file (<tt>SERVER_ROOT/passwd</tt>), which can be done with the <tt>htpasswd</tt> utility.
+Use this utility to create a file with a user <tt>aptel</tt> and password <tt>redes</tt>. Try to log in with this user and password using a web browser.
+</li>
+
+<li>Now try it using telnet. What is the realm name? Where does the server get it from?
+Send a second request to access the page. You can use this [Base64 converter](https://www.base64encode.org/).</li>
+</ol>
+
+<h3>Optional Section: Redirection and Virtual Hosts</h3>
+
+<ol start="18">
+<li><p>The <b><tt>Redirect</tt></b> directive allows redirecting a client from one URL to another. Use this directive to make browsers visiting the URL <tt>http://your_machine:your_port/old/</tt>
+automatically redirected to <tt>http://your_machine:your_port/new/</tt></p>.</li>
+
+<li><p>For this part, it is required to modify the directives <strong>within the <a href="https://httpd.apache.org/docs/2.4/vhosts/examples.html"><tt>VirtualHost</tt></a> directive</strong>: <tt>DocumentRoot</tt>, <tt>ServerAdmin</tt>, and <tt>ServerName</tt>.</li>The <b>&lt;VirtualHost&gt;</b> directive allows the server to respond to different web pages, depending on the server name used to access it. This name is sent with the Host header of HTTP/1.1.</p>
+
+<p>Create two new pages <tt>aptel.html</tt> (with messages "&iexcl;Hola mundo vhost1!" and "&iexcl;Hola mundo vhost2!", respectively) and
+copy them to the virtual hosts directories (at the end of the <tt>apache2.conf</tt> file). Test by sending telnet requests, changing the host header.</p>
+</li>
 </ol>
