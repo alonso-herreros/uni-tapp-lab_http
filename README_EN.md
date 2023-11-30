@@ -9,7 +9,7 @@ In this assigment, we will configure an Apache Web Server version 2.4.X and test
 In the lab, we have an Apache server installed in the /usr/sbin/ directory. By default, Apache retrieves configuration information from the file `/etc/apache2/apache2.conf`.
 However, we will use our own configuration file to test different options and adapt it to our needs.
 
-In the global classroom, you have two files to download for the practice (`apache2.conf` and `mime.types`).
+Above you have two files to download for the practice (`apache2.conf` and `mime.types`).
 The first one (`apache2.conf`) contains directives necessary to launch the server and specific directives related to its behavior.
 The second file (`mime.types`) contains the list of MIME types related to the content served by the server. The structure of this file is simple: type/subtype and the extension associated with that type.
 
