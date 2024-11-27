@@ -183,7 +183,7 @@ Manda una segunda petición para conseguir acceder a la página. Puedes usar el 
 </ul>
 </ol>
 
-<h3>Opcional: Redirección y "Hosts" Virtuales</h3>
+<h3>Redirección y "Hosts" Virtuales</h3>
 
 <ol start="19">
 <li><p>La directiva <b><tt>Redirect</tt></b> permite redireccionar a un cliente de una URL a otra. Usa esta directiva para hacer que los navegadores que visiten la URL <tt>http://your_machine:your_port/old/</tt>
