@@ -166,8 +166,6 @@ Use this utility to create a file with a user <tt>aptel</tt> and password <tt>re
 Send a second request to access the page. You can use this [Base64 converter](https://www.base64encode.org/).</li>
 </ol>
 
-<h3>Redirection and Virtual Hosts</h3>
-
 <h3>HTTP/2</h3>
 <ol start="18">
 <li><p>Make an HTTP/2 request to the website <tt>https://example.com</tt> using <tt>curl</tt> and <tt>nghttp</tt>. Ensure the request is made using HTTP/2.</p></li>
@@ -179,6 +177,8 @@ Send a second request to access the page. You can use this [Base64 converter](ht
 <li>What differences can be observed between using the <tt>curl</tt> command and <tt>nghttp</tt>?</li>
 </ul>
 </ol>
+
+<h3>Redirection and Virtual Hosts</h3>
 
 <ol start="19">
 <li><p>The <b><tt>Redirect</tt></b> directive allows redirecting a client from one URL to another. Use this directive to make browsers visiting the URL <tt>http://your_machine:your_port/old/</tt>
