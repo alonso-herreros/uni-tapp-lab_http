@@ -187,7 +187,7 @@ Manda una segunda petición para conseguir acceder a la página. Puedes usar el 
 
 <ol start="19">
 <li><p>La directiva <b><tt>Redirect</tt></b> permite redireccionar a un cliente de una URL a otra. Usa esta directiva para hacer que los navegadores que visiten la URL <tt>http://your_machine:your_port/old/</tt>
-sean automáticamente redirigidos a <tt>http://your_machine:your_port/new/</tt></p>.</li>
+sean automáticamente redirigidos a <tt>http://your_machine:your_port/new/</tt>.</p></li>
 
 <li><p>Para esta parte se requiere que modifique previamente las directivas <strong>dentro de la directiva <a href="https://httpd.apache.org/docs/2.4/vhosts/examples.html"><tt>VirtualHost</tt></a></strong>: <tt>DocumentRoot</tt>, <tt>ServerAdmin</tt> y <tt>ServerName</tt>.</li>La directiva <b>&lt;VirtualHost&gt;</b> permite hacer que el servidor responda distintas páginas web,  según el nombre de servidor que utilicemos para acceder a él. Este nombre se le envía con la cabecera Host de HTTP/1.1.</p>
 

@@ -176,13 +176,13 @@ Send a second request to access the page. You can use this [Base64 converter](ht
 <li>What version of TLS does the website use?</li>
 <li>How many streams are there?</li>
 <li>What frame types are exchanged?</li>
-<li>What differences you can observe between using the <tt>curl</tt> command and <tt>nghttp</tt>?</li>
+<li>What differences can be observed between using the <tt>curl</tt> command and <tt>nghttp</tt>?</li>
 </ul>
 </ol>
 
 <ol start="19">
 <li><p>The <b><tt>Redirect</tt></b> directive allows redirecting a client from one URL to another. Use this directive to make browsers visiting the URL <tt>http://your_machine:your_port/old/</tt>
-automatically redirected to <tt>http://your_machine:your_port/new/</tt></p>.</li>
+automatically redirected to <tt>http://your_machine:your_port/new/</tt>.</p></li>
 
 <li><p>For this part, it is required to modify the directives <strong>within the <a href="https://httpd.apache.org/docs/2.4/vhosts/examples.html"><tt>VirtualHost</tt></a> directive</strong>: <tt>DocumentRoot</tt>, <tt>ServerAdmin</tt>, and <tt>ServerName</tt>.</li>The <b>&lt;VirtualHost&gt;</b> directive allows the server to respond to different web pages, depending on the server name used to access it. This name is sent with the Host header of HTTP/1.1.</p>
 
