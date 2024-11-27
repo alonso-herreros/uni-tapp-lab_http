@@ -166,7 +166,7 @@ Use this utility to create a file with a user <tt>aptel</tt> and password <tt>re
 Send a second request to access the page. You can use this [Base64 converter](https://www.base64encode.org/).</li>
 </ol>
 
-<h3>Optional Section: Redirection and Virtual Hosts</h3>
+<h3>Redirection and Virtual Hosts</h3>
 
 <h3>HTTP/2</h3>
 <ol start="18">
