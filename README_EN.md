@@ -171,11 +171,13 @@ Send a second request to access the page. You can use this [Base64 converter](ht
 <h3>HTTP/2</h3>
 <ol start="18">
 <li><p>Make an HTTP/2 request to the website <tt>https://example.com</tt> using <tt>curl</tt> and <tt>nghttp</tt>. Ensure the request is made using HTTP/2.</p></li>
+<ul>
 <li>What headers are sent in the request?</li>
 <li>What version of TLS does the website use?</li>
 <li>How many streams are there?</li>
 <li>What frame types are exchanged?</li>
 <li>What differences you can observe between using the <tt>curl</tt> command and <tt>nghttp</tt>?</li>
+</ul>
 </ol>
 
 <ol start="19">

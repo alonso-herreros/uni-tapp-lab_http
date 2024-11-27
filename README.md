@@ -174,11 +174,13 @@ Manda una segunda petición para conseguir acceder a la página. Puedes usar el 
 <h3>HTTP/2</h3>
 <ol start="18">
 <li><p>Realiza una petición HTTP/2 al sitio web <tt>https://example.com</tt> utilizando <tt>curl</tt> y <tt>nghttp<tt>. Asegúrate de realizar la petición utilizando http2.</p></li>
+<ul>
 <li>¿Qué cabederas se mandan en la petición?</li>
 <li>¿Qué versión de TLS utiliza el sitio web?</li>
 <li>¿Cuántos streams hay?</li>
 <li>¿Qué tipo de frames se intercambian?</li>
 <li>¿Qué diferencias hay entre la utilización del comando <tt>curl</tt> y <tt>nghttp<tt>?</li>
+</ul>
 </ol>
 
 <h3>Opcional: Redirección y "Hosts" Virtuales</h3>
