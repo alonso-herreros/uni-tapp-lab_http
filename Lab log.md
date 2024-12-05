@@ -101,15 +101,31 @@ After about an hour of tweaking the configuration, trying to use absolute IP
 addresses and paths instead of names and environment variables, I tried to
 `curl` the webpage from the same machine that was running the server, and I
 finally got my expected response. As it turns out, the server I started would
-not respond to requests from machines outside a certain domain, because `curl`
-also failed from my machine.
+not respond to requests from my machine, probably due to firewall rules.
+Accessing the server through a web browser on the lab machines also worked.
 
 Upon `curl` of the webpage created
 (`http://<HOSTNAME>:<LISTEN_PORT>/aptel.html`), we got the contents of the html
-file we created before. The file (identical in content to the one we created)
-can be found in the logs: `[1.5.1-webpage.html](logs/1.5.1-webpage.html)`.
+file we created before.
+
+```html
+<html>
+    <body>
+        Hello World!
+    </body>
+</html>
+```
 
 Upon `curl` of the root (`http://<HOSTNAME>:<LISTEN_PORT>/`), we got a 404
-error along with an html file describing the issue. The file can be found
-in the logs: `[1.5.2-root.html](logs/1.5.2-root.html)`
+error along with an html file describing the issue:
+
+```html
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL was not found on this server.</p>
+</body></html>
+```
 
