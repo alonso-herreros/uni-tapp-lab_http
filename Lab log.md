@@ -34,6 +34,20 @@ to run it with `. env.sh` so it can properly set environment variables.
 This was easily done following the instructions, moving the necessary files and
 creating the subdirectories in the `httpd` directory in this repository.
 
+```text
+httpd/
+├── apache2.conf
+├── mime.types
+├── defaultdocs/
+├── log/
+├── vhost1/
+│   ├── docs/
+│   └── log/
+└── vhost2/
+    ├── docs/
+    └── log/
+```
+
 ### 1.2. Config file setup
 
 The `apache2.conf` was modified as instructed, using environment variable
