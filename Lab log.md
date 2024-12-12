@@ -24,8 +24,8 @@ The environment variables used were
 * `LISTEN_PORT`, set to `9xxx`, where `xxx` are the last 3 digits of my `UID`
 * `HOSTNAME`, set to the value of the environment variable `HOSTNAME`
 
-Run the `env.sh` script from the repo root to set these variables. Remember
-to run it with `. env.sh` so it can properly set environment variables.
+Run the `env_set.sh` script from the repo root to set these variables. Remember
+to run it with `. env_set.sh` so it can properly set environment variables.
 
 ## Part 1: Server Configuration
 
