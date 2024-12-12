@@ -143,3 +143,110 @@ error along with an html file describing the issue:
 </body></html>
 ```
 
+## Part 2: HTTP Requests and Responses
+
+In this section, commands were first written in batch in `.http` files in the
+`cmds` folder, and then piped into the server using `netcat` (or `nc`). The
+same sequence of commands can be sent manually using `telnet`, as instructed in
+the lab guide.
+
+> **Note**
+>
+> Note that these command files must have `CRLF` (DOS-style) line endings.
+> Otherwise, the server will not understand the commands and it will respond
+> with `400 Bad Request`
+
+### 2.6. Requests through the command line
+
+Requests were first made with HTTP/0.9 and then with HTTP/1.0 to get the
+`/aptel.html` and `/` (root) resources.
+
+#### 2.6.1 Requests with HTTP/0.9
+
+First, both requests were made with HTTP/0.9, with the following commands and
+responses
+
+```http
+GET /aptel.html
+```
+
+```html
+<html>
+    <body>
+        Hello World!
+    </body>
+</html>
+```
+
+```http
+GET /
+```
+
+```html
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL was not found on this server.</p>
+</body></html>
+```
+
+As we can see, the responses we get are in pure html format, **with no
+headers**. Furthermore, the connections were closed immediately after the
+transaction, as it's done in HTTP/0.9.
+
+#### 2.6.2. Requests with HTTP/1.0
+
+Both resources were requested again, this time using HTTP/1.0 with the
+following commands and responses:
+
+```http
+GET /aptel.html HTTP/1.0
+
+```
+
+Note the empty line at the end. It is required to send an empty line to signal
+the end of the headers section, which are supported in HTTP/1.0.
+
+```http
+HTTP/1.1 200 OK
+Date: Thu, 12 Dec 2024 17:53:49 GMT
+Server: Apache/2.4.57 (Debian)
+Last-Modified: Tue, 10 Dec 2024 12:26:47 GMT
+ETag: "3b-628e99848b804"
+Accept-Ranges: bytes
+Content-Length: 59
+Connection: close
+Content-Type: text/html
+
+<html>
+    <body>
+        Hello World!
+    </body>
+</html>
+```
+
+As we can see, this time the server responded with a few headers:
+
+* `Date`
+* `Server`
+* `Last-Modified`
+* `ETag`
+* `Accept-Ranges`
+* `Content-Length`
+* `Content-Type`
+* `Connection`
+
+After an **empty line**, which signals the end of the header section, the same
+html file from before was included.
+
+The root resource was also requested using HTML/1.0
+
+```http
+GET / HTTP/1.0
+
+```
+
+Note again the empty line at the end
+
