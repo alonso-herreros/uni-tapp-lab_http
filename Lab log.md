@@ -333,3 +333,31 @@ inactivity. This is consistent with the value in the `apache2.conf` file:
 KeepAliveTimeout 15
 ```
 
+### 2.9. Explain `KeepAlive` and `MaxKeepAliveRequests`
+
+As explained in the config file, the `KeepAlive` is a sort of master switch to
+enable or disable persistent connections. It should be kept to `On` for
+HTTP/1.1, but can be disabled if the server admin wants to.
+
+```apacheconf
+#
+# KeepAlive: Whether or not to allow persistent connections (more than
+# one request per connection). Set to "Off" to deactivate.
+#
+KeepAlive On
+```
+
+As also explained in the config file, the `MaxKeepAliveRequests` is a limit for
+the number of requests a single connection will handle. If the server receives
+this amount of requests in a single connection, it will close the connection,
+forcing the client to make a new one if it wants to keep making requests.
+
+```apacheconf
+#
+# MaxKeepAliveRequests: The maximum number of requests to allow
+# during a persistent connection. Set to 0 to allow an unlimited amount.
+# We recommend you leave this number high, for maximum performance.
+#
+MaxKeepAliveRequests 100
+```
+
