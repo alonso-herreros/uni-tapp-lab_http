@@ -646,3 +646,57 @@ displayed the 'Save File' pop-up. In Firefox, which was not configured to
 prompt for file saving location, the file was directly downloaded to the
 default folder.
 
+## Part 6: Directory Management and Security
+
+Following the instructions, these lines were appended to the `apache2.conf`
+file:
+
+```apacheconf
+<Directory ${HTTPD_ROOT}/defaultdocs/internal>
+    AuthType Basic
+    AuthName "Telematic Applications"
+    AuthUserFile passwd
+    Require user aptel
+</Directory>
+```
+
+### 6.15. Test authentication request
+
+A new directory `internal` was created inside the `defaultdocs` directory,
+along with a new file `aptel.html` inside with the following content:
+
+```html
+<html>
+    <body>
+        Hello World! (internal)
+    </body>
+</html>
+```
+
+When trying to access `http://localhost:9990/internal`, the browser showed
+a login prompt, as shown in the screenshot:
+
+![alt](img/15-internal-sign-in.png)
+
+Since no authorized user was configured, it was impossible to access the
+internal `aptel.html` file. If the cancel option was chosen the following `401
+Unauthorized` error page was shown:
+
+```html
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>401 Unauthorized</title>
+</head><body>
+<h1>Unauthorized</h1>
+<p>This server could not verify that you
+are authorized to access the document
+requested.  Either you supplied the wrong
+credentials (e.g., bad password), or your
+browser doesn't understand how to supply
+the credentials required.</p>
+</body></html>
+```
+
+When accessing the resource through `curl`, the response was that exact same
+HTML file.
+
