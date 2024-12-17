@@ -547,3 +547,63 @@ localhost - - [17/Dec/2024:18:09:23 +0100] "GET /aptel.html HTTP/1.1" 200 59
 As we can see, the IP address was resolved to the hostname (`localhost` in this
 case).
 
+## Part 5: Content Types in Apache
+
+> **Note**
+>
+> As the server could not be reached from my local machine, I set up an SSH
+> tunnel and got it working fine with browser access.
+
+### 5.13. Test `test.aptel`
+
+A copy of the `aptel.html` file was made in the same directory, named
+`test.aptel`.
+
+The `DirectoryIndex` directive was also changed so that the default resource
+served when the root (or any other directory) is requested is the newly created
+`test.aptel` file:
+
+```apacheconf
+#
+# DirectoryIndex: sets the file that Apache will serve if a directory
+# is requested.
+#
+<IfModule dir_module>
+    DirectoryIndex test.aptel
+</IfModule>
+```
+
+When accessed through my browser (Brave), the webpage displayed was exactly the
+same as when accessing `aptel.html`:
+
+![img](img/13-test.png)
+
+However, other browsers may exhibit different behavior — for instance, `lynx`
+did not render a web page but just printed the HTML code.
+
+When the resource was requested through a plain `GET` request (either `/` or
+`/test.aptel`) the result was very similar to the one when requesting
+`/aptel.html`, except for the lack of a `Content-Type` header. The response is
+shown below:
+
+```http
+HTTP/1.1 200 OK
+Date: Tue, 17 Dec 2024 21:59:45 GMT
+Server: Apache/2.4.57 (Debian)
+Last-Modified: Tue, 10 Dec 2024 12:26:47 GMT
+ETag: "3b-628e99848b804"
+Accept-Ranges: bytes
+Content-Length: 59
+Connection: close
+
+<html>
+    <body>
+        Hello World!
+    </body>
+</html>
+```
+
+As the file extension `.aptel` is not defined in the file indicated by
+`TypesConfig`, and **the server is not configured to have a default MIME type,
+no type information is sent in the response**.
+
