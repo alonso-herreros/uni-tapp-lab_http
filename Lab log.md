@@ -203,7 +203,7 @@ following commands and responses:
 
 ```http
 GET /aptel.html HTTP/1.0
-
+​
 ```
 
 Note the empty line at the end. It is required to send an empty line to signal
@@ -245,7 +245,7 @@ The root resource was also requested using HTML/1.0
 
 ```http
 GET / HTTP/1.0
-
+​
 ```
 
 Note again the empty line at the end
