@@ -1,2 +1,2 @@
 *.pid
-httpd/logs/*.log
+httpd/log/*.log
