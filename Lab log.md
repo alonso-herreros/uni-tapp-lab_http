@@ -607,3 +607,42 @@ As the file extension `.aptel` is not defined in the file indicated by
 `TypesConfig`, and **the server is not configured to have a default MIME type,
 no type information is sent in the response**.
 
+### 5.14. Set up `x-type-aptel` MIME type
+
+The following line was added to the `mime.types` file, which is specified in
+the server config as the `TypesConfig` file:
+
+```text
+application/x-type-aptel			aptel
+```
+
+After that, the server was restarted, and the previous tests were done again,
+starting with the command-line `GET` request:
+
+```http
+HTTP/1.1 200 OK
+Date: Tue, 17 Dec 2024 22:55:52 GMT
+Server: Apache/2.4.57 (Debian)
+Last-Modified: Tue, 10 Dec 2024 12:26:47 GMT
+ETag: "3b-628e99848b804"
+Accept-Ranges: bytes
+Content-Length: 59
+Connection: close
+Content-Type: application/x-type-aptel
+
+<html>
+    <body>
+        Hello World!
+    </body>
+</html>
+```
+
+As we can see, the `Content-Type` is correctly specified as
+`application/x-type-aptel`.
+
+Then, the browser test. In Brave, when trying to access the resource, no page
+was displayed. Instead, **the browser tried to download the file** and
+displayed the 'Save File' pop-up. In Firefox, which was not configured to
+prompt for file saving location, the file was directly downloaded to the
+default folder.
+
