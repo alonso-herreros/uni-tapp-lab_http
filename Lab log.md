@@ -505,3 +505,45 @@ stopping, including one GET request (the same one as in section 2.7.1).
 
 As we can see, there's a lot more detail.
 
+### 4.12. Custom log
+
+As specified in the config, the `CustomLog` is set to the file
+[`access.log`](httpd/log/access.log). Upon inspection, each line contains one
+request made to the server, as shown below:
+
+```text
+127.0.0.1 - - [17/Dec/2024:16:54:41 +0100] "GET /aptel.html HTTP/1.1" 200 59
+127.0.0.1 - - [17/Dec/2024:17:22:38 +0100] "GET /aptel.html HTTP/1.1" 200 59
+127.0.0.1 - - [17/Dec/2024:17:46:01 +0100] "GET /aptel.html HTTP/1.1" 200 59
+```
+
+Ans yes, the requesting machine is identified only by its IP, which in this
+case is `127.0.0.1` (localhost).
+
+The `CustomLog` directive specifies `common` as the format, which was
+previously defined in [this line](httpd/apache2.conf#L243):
+
+```apacheconf
+LogFormat "%h %l %u %t \"%r\" %>s %b" common
+```
+
+The `%h` should record the hostname, but since the directive `HostnameLookups`
+is set to `Off` ([line 120](httpd/apache2.conf#L120)), the IP is not resolved
+to a hostname. If we change this line, we can get the resolved hostname instead
+of the IP address.
+
+```apacheconf
+HostnameLookups On
+```
+
+After this change, the server was restarted and a request was made. The
+following line was appended to the [`access.log`](httpd/log/access.log) as a
+result:
+
+```text
+localhost - - [17/Dec/2024:18:09:23 +0100] "GET /aptel.html HTTP/1.1" 200 59
+```
+
+As we can see, the IP address was resolved to the hostname (`localhost` in this
+case).
+
