@@ -501,7 +501,7 @@ stopping, including one GET request (the same one as in section 2.7.1).
 [Tue Dec 17 17:46:01.489258 2024] [authz_core:debug] [pid 164080] mod_authz_core.c(843): [client 127.0.0.1:53198] AH01628: authorization result: granted (no directives)
 [Tue Dec 17 17:47:07.816877 2024] [core:info] [pid 164072] AH00096: removed PID file /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache.pid (pid=164072)
 [Tue Dec 17 17:47:07.816929 2024] [mpm_prefork:notice] [pid 164072] AH00169: caught SIGTERM, shutting down
-``` 
+```
 
 As we can see, there's a lot more detail.
 
