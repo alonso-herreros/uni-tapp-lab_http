@@ -248,5 +248,33 @@ GET / HTTP/1.0
 ​
 ```
 
-Note again the empty line at the end
+Note again the empty line at the end.
+
+The response was similar to the one obtained with HTTP/0.9, but including
+headers.
+
+```http
+HTTP/1.1 404 Not Found
+Date: Thu, 12 Dec 2024 17:54:02 GMT
+Server: Apache/2.4.57 (Debian)
+Content-Length: 196
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL was not found on this server.</p>
+</body></html>
+```
+
+In this case we got a few headers less, only including the following list:
+
+* `Date`
+* `Server`
+* `Content-Length`
+* `Content-Type`
+* `Connection`
 

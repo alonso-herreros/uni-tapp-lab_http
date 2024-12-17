@@ -1,4 +1,4 @@
-[2024-12-12, 18:53:49] cat cmds/6.2.1-get-aptel-v1_0.http | nc localhost 9990
+#[2024-12-12, 18:53:49] cat cmds/6.2.1-get-aptel-v1_0.http | nc localhost 9990
 HTTP/1.1 200 OK
 Date: Thu, 12 Dec 2024 17:53:49 GMT
 Server: Apache/2.4.57 (Debian)

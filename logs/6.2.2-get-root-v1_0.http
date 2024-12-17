@@ -1,4 +1,4 @@
-[2024-12-12, 18:54:02] cat cmds/6.2.2-get-root-v1_0.http | nc localhost 9990
+#[2024-12-12, 18:54:02] cat cmds/6.2.2-get-root-v1_0.http | nc localhost 9990
 HTTP/1.1 404 Not Found
 Date: Thu, 12 Dec 2024 17:54:02 GMT
 Server: Apache/2.4.57 (Debian)
