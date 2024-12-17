@@ -308,3 +308,28 @@ When this request is sent, the server added the `Connection: close` header to
 their response, and then closed the connection immediately after sending the
 response, just like in section 2.6.2
 
+### 2.8. Measure keep-alive timeout
+
+Indeed, the server does close the connection after a certain amount of time if
+no further requests are sent. This timeout was measured using the `time`
+command on the same request used for section 2.7.1. The full command input and
+output can be checked in the logs.
+
+```text
+real 15.01
+user 0.00
+sys 0.00
+```
+
+Neglecting the time it took for the request and response exchange, we can see
+that the server closed the connection after approximately 15 seconds of
+inactivity. This is consistent with the value in the `apache2.conf` file:
+
+```apacheconf
+#
+# KeepAliveTimeout: Number of seconds to wait for the next request from the
+# same client on the same connection.
+#
+KeepAliveTimeout 15
+```
+
