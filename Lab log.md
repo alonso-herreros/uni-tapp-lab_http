@@ -452,3 +452,56 @@ Once started, we can see that the process list now has 9 server processes:
 In this case, if we connect to the server, no new processes have to be started,
 as only one of 8 child processes would be busy, leaving 7 *spare* children.
 
+## Part 4: Logs Management
+
+> **Note**
+>
+> Until now, the contents of the logs folder were excluded from this
+> repository, as specified in the `.gitignore` file. During this section, they
+> will be explicitly added.
+
+### 4.11. Error log
+
+Upon inspection of the [error log](httpd/log/error.log), the messages appeared
+to only be about starting and stopping the server. The following are the log
+messages generated during a normal operating cycle (from start to stop)
+
+```text
+[Tue Dec 17 16:42:53.888162 2024] [mpm_prefork:notice] [pid 134361] AH00163: Apache/2.4.57 (Debian) configured -- resuming normal operations
+[Tue Dec 17 16:42:53.888240 2024] [core:notice] [pid 134361] AH00094: Command line: 'apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf'
+[Tue Dec 17 17:06:32.348118 2024] [mpm_prefork:notice] [pid 134361] AH00169: caught SIGTERM, shutting down
+```
+
+As instructed, `LogLevel` was increased to `detail`. For easier comparison, the
+new logs were saved to a different file, now called
+[`error_debug.log`](httpd/log/error_debug.log), and the server was restarted.
+This file contained much more detail about the server operation. The following
+is an extract equivalent to the one shown previously, from server start to
+stopping, including one GET request (the same one as in section 2.7.1).
+
+```text
+[Tue Dec 17 17:42:58.534618 2024] [watchdog:debug] [pid 164072] mod_watchdog.c(445): AH010033: Watchdog: Running with WatchdogInterval 1000ms
+[Tue Dec 17 17:42:58.534687 2024] [watchdog:debug] [pid 164072] mod_watchdog.c(454): AH02974: Watchdog: found parent providers.
+[Tue Dec 17 17:42:58.534691 2024] [watchdog:debug] [pid 164072] mod_watchdog.c(500): AH02977: Watchdog: found child providers.
+[Tue Dec 17 17:42:58.534694 2024] [watchdog:debug] [pid 164072] mod_watchdog.c(508): AH02978: Watchdog: Looking for child (_singleton_).
+[Tue Dec 17 17:42:58.534696 2024] [watchdog:debug] [pid 164072] mod_watchdog.c(508): AH02978: Watchdog: Looking for child (_default_).
+[Tue Dec 17 17:42:58.537915 2024] [watchdog:debug] [pid 164080] mod_watchdog.c(559): AH02980: Watchdog: nothing configured?
+[Tue Dec 17 17:42:58.538155 2024] [watchdog:debug] [pid 164081] mod_watchdog.c(559): AH02980: Watchdog: nothing configured?
+[Tue Dec 17 17:42:58.538355 2024] [watchdog:debug] [pid 164082] mod_watchdog.c(559): AH02980: Watchdog: nothing configured?
+[Tue Dec 17 17:42:58.538583 2024] [watchdog:debug] [pid 164083] mod_watchdog.c(559): AH02980: Watchdog: nothing configured?
+[Tue Dec 17 17:42:58.538735 2024] [watchdog:debug] [pid 164084] mod_watchdog.c(559): AH02980: Watchdog: nothing configured?
+[Tue Dec 17 17:42:58.539119 2024] [watchdog:debug] [pid 164085] mod_watchdog.c(559): AH02980: Watchdog: nothing configured?
+[Tue Dec 17 17:42:58.539204 2024] [watchdog:debug] [pid 164086] mod_watchdog.c(559): AH02980: Watchdog: nothing configured?
+[Tue Dec 17 17:42:58.539312 2024] [mpm_prefork:notice] [pid 164072] AH00163: Apache/2.4.57 (Debian) configured -- resuming normal operations
+[Tue Dec 17 17:42:58.539333 2024] [mpm_prefork:info] [pid 164072] AH00164: Server built: 2023-04-13T03:26:51
+[Tue Dec 17 17:42:58.539340 2024] [core:notice] [pid 164072] AH00094: Command line: 'apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf'
+[Tue Dec 17 17:42:58.539344 2024] [core:debug] [pid 164072] log.c(1570): AH02639: Using SO_REUSEPORT: yes (1)
+[Tue Dec 17 17:42:58.539355 2024] [mpm_prefork:debug] [pid 164072] prefork.c(970): AH00165: Accept mutex: none (default: pthread)
+[Tue Dec 17 17:42:58.539431 2024] [watchdog:debug] [pid 164087] mod_watchdog.c(559): AH02980: Watchdog: nothing configured?
+[Tue Dec 17 17:46:01.489258 2024] [authz_core:debug] [pid 164080] mod_authz_core.c(843): [client 127.0.0.1:53198] AH01628: authorization result: granted (no directives)
+[Tue Dec 17 17:47:07.816877 2024] [core:info] [pid 164072] AH00096: removed PID file /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache.pid (pid=164072)
+[Tue Dec 17 17:47:07.816929 2024] [mpm_prefork:notice] [pid 164072] AH00169: caught SIGTERM, shutting down
+``` 
+
+As we can see, there's a lot more detail.
+

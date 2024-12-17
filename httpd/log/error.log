@@ -1,0 +1,24 @@
+[Tue Dec 17 16:42:53.888162 2024] [mpm_prefork:notice] [pid 134361] AH00163: Apache/2.4.57 (Debian) configured -- resuming normal operations
+[Tue Dec 17 16:42:53.888240 2024] [core:notice] [pid 134361] AH00094: Command line: 'apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf'
+[Tue Dec 17 17:06:32.348118 2024] [mpm_prefork:notice] [pid 134361] AH00169: caught SIGTERM, shutting down
+[Tue Dec 17 17:06:37.903523 2024] [mpm_prefork:notice] [pid 145541] AH00163: Apache/2.4.57 (Debian) configured -- resuming normal operations
+[Tue Dec 17 17:06:37.903610 2024] [core:notice] [pid 145541] AH00094: Command line: 'apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf'
+[Tue Dec 17 17:13:14.122354 2024] [mpm_prefork:notice] [pid 145541] AH00169: caught SIGTERM, shutting down
+[Tue Dec 17 17:13:37.443171 2024] [mpm_prefork:notice] [pid 148628] AH00163: Apache/2.4.57 (Debian) configured -- resuming normal operations
+[Tue Dec 17 17:13:37.443251 2024] [core:notice] [pid 148628] AH00094: Command line: 'apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf'
+[Tue Dec 17 17:13:44.280440 2024] [mpm_prefork:notice] [pid 148628] AH00169: caught SIGTERM, shutting down
+[Tue Dec 17 17:15:46.971886 2024] [mpm_prefork:notice] [pid 150276] AH00163: Apache/2.4.57 (Debian) configured -- resuming normal operations
+[Tue Dec 17 17:15:46.971970 2024] [core:notice] [pid 150276] AH00094: Command line: 'apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf'
+[Tue Dec 17 17:16:02.022282 2024] [mpm_prefork:notice] [pid 150276] AH00169: caught SIGTERM, shutting down
+[Tue Dec 17 17:16:31.396708 2024] [mpm_prefork:notice] [pid 151080] AH00163: Apache/2.4.57 (Debian) configured -- resuming normal operations
+[Tue Dec 17 17:16:31.396801 2024] [core:notice] [pid 151080] AH00094: Command line: 'apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf'
+[Tue Dec 17 17:16:33.901019 2024] [mpm_prefork:notice] [pid 151080] AH00169: caught SIGTERM, shutting down
+[Tue Dec 17 17:16:44.269259 2024] [mpm_prefork:notice] [pid 151587] AH00163: Apache/2.4.57 (Debian) configured -- resuming normal operations
+[Tue Dec 17 17:16:44.269329 2024] [core:notice] [pid 151587] AH00094: Command line: 'apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf'
+[Tue Dec 17 17:16:46.066618 2024] [mpm_prefork:notice] [pid 151587] AH00169: caught SIGTERM, shutting down
+[Tue Dec 17 17:16:50.528407 2024] [mpm_prefork:notice] [pid 151909] AH00163: Apache/2.4.57 (Debian) configured -- resuming normal operations
+[Tue Dec 17 17:16:50.528512 2024] [core:notice] [pid 151909] AH00094: Command line: 'apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf'
+[Tue Dec 17 17:16:53.032824 2024] [mpm_prefork:notice] [pid 151909] AH00169: caught SIGTERM, shutting down
+[Tue Dec 17 17:18:45.872255 2024] [mpm_prefork:notice] [pid 153425] AH00163: Apache/2.4.57 (Debian) configured -- resuming normal operations
+[Tue Dec 17 17:18:45.872341 2024] [core:notice] [pid 153425] AH00094: Command line: 'apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf'
+[Tue Dec 17 17:42:08.540778 2024] [mpm_prefork:notice] [pid 153425] AH00169: caught SIGTERM, shutting down
