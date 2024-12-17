@@ -1,0 +1,8 @@
+[2024-12-17, 16:38:37] ps x | grep apache | grep -v grep
+  75240 ?        Ss     0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+  75248 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+  75249 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+  75250 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+  75251 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+  75252 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+  97631 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf

@@ -361,3 +361,94 @@ forcing the client to make a new one if it wants to keep making requests.
 MaxKeepAliveRequests 100
 ```
 
+## Part 3: Processes and Resources in the Web Server
+
+### 3.10. Process count
+
+#### 3.10.1. Default process count
+
+By running `ps x | grep apache2` we can manually count how many server
+processes are running:
+
+```text
+  75240 ?        Ss     0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+  75248 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+  75249 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+  75250 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+  75251 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+  75252 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+  97631 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+```
+
+We can manually count that there were 7 server processes in total at the time
+of running the command.
+
+> **Note**
+>
+> We can also get this number by filtering the process list and redirecting it
+> to `wc -l`, or watch as it changes using `watch`. See the following list of
+> useful commands:
+>
+> * `ps x | grep apache | grep -v grep | wc -l`
+> * `watch -n 1 'ps x | grep apache | grep -v grep'`
+> * `watch -n 1 'ps x | grep apache | grep -v grep | tee /dev/stderr | wc -l'`
+
+We can check the pertinent directives in the server config:
+
+```apacheconf
+    StartServers          5
+    MinSpareServers       5
+    MaxSpareServers      10
+    MaxClients          150
+    MaxRequestsPerChild   100
+```
+
+The number of child processes indicated in the `StartServers` directive is
+**5**, which seems inconsistent with this result. However, once you take into
+account the `MinSpareServers` and the fact that this is measured after a
+request was made to this server, it makes sense.
+
+If you restart the server, you'll get **6** running processes: the **parent and
+5 children**. Once you open a connection, one child becomes busy, and in order
+to keep 5 *spare* children (not busy), an extra child is spawned, resulting in
+**7 idle children at the end**. If 6 connections were started simultaneously,
+a total of 11 children would be observed in the process list, but once the
+connections were closed, one of them would be killed in order to honor the
+`MaxSpareServers` directive, which is set to 10.
+
+#### 3.10.2. Increasing default process count
+
+The `StartServers` directive was changed to **8**, as instructed, leaving the
+rest of the setting unchanged:
+
+```apacheconf
+    StartServers          8
+    MinSpareServers       5
+    MaxSpareServers      10
+    MaxClients          150
+    MaxRequestsPerChild   100
+```
+
+In order to apply this config, the server must be stopped and started again.
+The following are some methods for stopping the server:
+
+* `pkill apache2`
+* `apache2 -f "$PWD/httpd/apache2.conf" -k stop`
+
+Once started, we can see that the process list now has 9 server processes:
+
+```text
+ 153425 ?        Ss     0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+ 153431 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+ 153434 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+ 153435 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+ 153436 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+ 153437 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+ 153438 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+ 153439 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+ 153440 ?        S      0:00 apache2 -f /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/apache2.conf
+```
+
+In this case, if we connect to the server, no new processes have to be started,
+as only one of 8 child processes would be busy, leaving 7 *spare* children.
+
