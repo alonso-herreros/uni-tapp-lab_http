@@ -1,0 +1,14 @@
+#[2024-12-17, 13:22:40] nc localhost 9990
+HTTP/1.1 404 Not Found
+Date: Tue, 17 Dec 2024 12:22:40 GMT
+Server: Apache/2.4.57 (Debian)
+Content-Length: 196
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL was not found on this server.</p>
+</body></html>

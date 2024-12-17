@@ -278,3 +278,33 @@ In this case we got a few headers less, only including the following list:
 * `Content-Type`
 * `Connection`
 
+### 2.7. Requests with HTTP/1.1
+
+In HTTP/1.1, the `Host` header is mandatory. The request for the `/aptel.html`
+resource is as follows:
+
+```http
+GET /aptel.html HTTP/1.1
+Host: localhost
+​
+```
+
+The response was almost identical to the one obtained with HTTP/1.0, except for
+the `Date` header contente and the **exclusion of the `Connection: close`
+header**. The server **did not close the connection** because, by default,
+HTTP/1.1 connections are persistent.
+
+In order to request that the connection be closed immediately, we can include
+the `Connection: close` header in the request:
+
+```http
+GET /aptel.html HTTP/1.1
+Host: localhost
+Connection: close
+​
+```
+
+When this request is sent, the server added the `Connection: close` header to
+their response, and then closed the connection immediately after sending the
+response, just like in section 2.6.2
+
