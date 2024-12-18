@@ -1,0 +1,15 @@
+#[2024-12-18, 10:16:06] nc localhost 9990
+HTTP/1.1 200 OK
+Date: Wed, 18 Dec 2024 09:16:06 GMT
+Server: Apache/2.4.57 (Debian)
+Last-Modified: Tue, 17 Dec 2024 23:20:29 GMT
+ETag: "46-6297f8aff4d18"
+Accept-Ranges: bytes
+Content-Length: 70
+Content-Type: text/html
+
+<html>
+    <body>
+        Hello World! (internal)
+    </body>
+</html>

@@ -733,3 +733,54 @@ the internal resource was served, as shown in the following screenshot:
 
 ![alt](img/16-internal-accessed.png)
 
+### 6.17. Access protected resource using telnet
+
+When the bare `GET` request is made for the protected resource, the response is
+a `401 Unauthorized` message with the following headers (body omitted):
+
+```http
+HTTP/1.1 401 Unauthorized
+Date: Wed, 18 Dec 2024 09:12:40 GMT
+Server: Apache/2.4.57 (Debian)
+WWW-Authenticate: Basic realm="Telematic Applications"
+Content-Length: 381
+Content-Type: text/html; charset=iso-8859-1
+```
+
+The real name is `Telematic Applications`, which is configured by the
+`AuthName` directive (see the introduction of section 6).
+
+In order to access the page, our `GET` request must provide authentication.
+through the advertised scheme, which in this case is `Basic` (as configured by
+the `AuthType` directive).
+
+The Basic authentication method is simply sending `user:password` encoded in
+base64 inside the `Authorization` header. In this case, `aptel:redes` is
+encoded to `YXB0ZWw6cmVkZXM=`, so the following request is sent:
+
+```http
+GET /internal/ HTTP/1.1
+Host: localhost
+Authorization: Basic YXB0ZWw6cmVkZXM=
+​
+```
+
+Finally, we were able to access the protected resource:
+
+```http
+HTTP/1.1 200 OK
+Date: Wed, 18 Dec 2024 09:16:06 GMT
+Server: Apache/2.4.57 (Debian)
+Last-Modified: Tue, 17 Dec 2024 23:20:29 GMT
+ETag: "46-6297f8aff4d18"
+Accept-Ranges: bytes
+Content-Length: 70
+Content-Type: text/html
+
+<html>
+    <body>
+        Hello World! (internal)
+    </body>
+</html>
+```
+
