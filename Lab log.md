@@ -700,3 +700,13 @@ the credentials required.</p>
 When accessing the resource through `curl`, the response was that exact same
 HTML file.
 
+However, when trying to submit a username and password through the sign-in
+form, the response was a `500 Internal Server Error` page, probably due to the
+non-existent file `passwd` specified in the server configuration previously.
+The error log also showed a message about this missing file. Although the file
+is not updated in this section, the last line showed this message:
+
+```text
+[Wed Dec 18 00:45:34.268692 2024] [authn_file:error] [pid 239484] (2)No such file or directory: [client 127.0.0.1:40232] AH01620: Could not open password file: /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/passwd
+```
+
