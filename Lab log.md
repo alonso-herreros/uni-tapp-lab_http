@@ -673,6 +673,14 @@ along with a new file `aptel.html` inside with the following content:
 </html>
 ```
 
+And the default file sent for a directory was changed to `aptel.html`
+
+```apacheconf
+<IfModule dir_module>
+    DirectoryIndex aptel.html
+</IfModule>
+```
+
 When trying to access `http://localhost:9990/internal`, the browser showed
 a login prompt, as shown in the screenshot:
 
