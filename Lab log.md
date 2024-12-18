@@ -872,3 +872,82 @@ When issuing the `GET` request for the old resource, a `301 Moved Permanently`
 response is received, which the browser processes automaticallly to update the
 URL.
 
+### 8.20. Virtual Hosts
+
+Following the instructions, the `aptel.html` file was copied and modified,
+resulting in the following structure:
+
+```text
+httpd/
+├── defaultdocs/
+│   ├── internal/
+│   │   └── aptel.html
+│   ├── aptel.html
+│   └── test.aptel
+├── log/
+│   ├── access.log
+│   ├── error_debug.log
+│   └── error.log
+├── vhost1/
+│   ├── docs/
+│   │   └── aptel.html
+│   └── log/
+├── vhost2/
+│   ├── docs/
+│   │   └── aptel.html
+│   └── log/
+├── apache2.conf
+├── mime.types
+└── passwd
+```
+
+Then, the following blocks were added to the `apache2.conf` file:
+
+```apacheconf
+<VirtualHost localhost>
+   ServerName vhost1
+   ServerAdmin master@vhost1.com
+   DocumentRoot vhost1/docs
+   ErrorLog vhost1/log/error.log
+   TransferLog vhost1/log/access.log
+</VirtualHost>
+
+<VirtualHost localhost>
+   ServerName vhost2
+   ServerAdmin master@vhost2.com
+   DocumentRoot vhost2/docs
+   ErrorLog vhost2/log/error.log
+   TransferLog vhost2/log/access.log
+</VirtualHost>
+```
+
+Using the following request, we can get the resource from `vhost1`
+
+```http
+GET /aptel.html HTTP/1.1
+Host: vhost1
+​
+```
+
+And we get the correct response:
+
+```http
+HTTP/1.1 200 OK
+Date: Wed, 18 Dec 2024 11:38:02 GMT
+Server: Apache/2.4.57 (Debian)
+Last-Modified: Wed, 18 Dec 2024 11:24:01 GMT
+ETag: "42-62989a68557b3"
+Accept-Ranges: bytes
+Content-Length: 66
+Connection: close
+Content-Type: text/html
+
+<html>
+    <body>
+        Hello World vhost1!
+    </body>
+</html>
+```
+
+The same can be done for `vhost2`, and we'd get the corresponding file.
+

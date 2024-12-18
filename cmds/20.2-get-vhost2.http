@@ -1,0 +1,4 @@
+GET /aptel.html HTTP/1.1
+Host: vhost2
+Connection: close
+
