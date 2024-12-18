@@ -966,6 +966,6 @@ The same can be done for `vhost2`, and we'd get the corresponding file.
 >    DocumentRoot defaultdocs
 >    ErrorLog log/error_debug.log
 >    TransferLog log/access.log
-> </VirtualHost> 
+> </VirtualHost>
 > ```
 
