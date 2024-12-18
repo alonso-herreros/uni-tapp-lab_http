@@ -718,3 +718,18 @@ is not updated in this section, the last line showed this message:
 [Wed Dec 18 00:45:34.268692 2024] [authn_file:error] [pid 239484] (2)No such file or directory: [client 127.0.0.1:40232] AH01620: Could not open password file: /usr/lab/alum/0493990/Projects/4.TApp/4.Labs/http/httpd/passwd
 ```
 
+### 6.16. Generate `passwd` file
+
+As mentioned in the instructions, the `htpasswd` was used to generate the
+`passwd` file, using the following command from the repository root:
+
+```sh
+htpasswd -cb httpd/passwd aptel redes
+```
+
+The server recognized the file without the need for a restart. Upon entering
+the specified username and password in the 'Sign in' prompt from the browser,
+the internal resource was served, as shown in the following screenshot:
+
+![alt](img/16-internal-accessed.png)
+
