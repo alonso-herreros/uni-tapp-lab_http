@@ -951,3 +951,21 @@ Content-Type: text/html
 
 The same can be done for `vhost2`, and we'd get the corresponding file.
 
+> **Note**
+>
+> Apparently, the apache server forced the selection of a virtual host once
+> they were set up, so there was no way of accessing the original `aptel.html`
+> or the rest of the files. Since it selected the first virtual host if no
+> other virtual hosts matched the request, **a default virtual host was added
+> before the ones added previously**, with the appropriate configuration:
+>
+> ```apacheconf
+> <VirtualHost localhost>
+>    ServerName ${HOSTNAME}.lab.it.uc3m.es
+>    ServerAlias localhost default
+>    DocumentRoot defaultdocs
+>    ErrorLog log/error_debug.log
+>    TransferLog log/access.log
+> </VirtualHost> 
+> ```
+
