@@ -784,3 +784,66 @@ Content-Type: text/html
 </html>
 ```
 
+## Part 7: HTTP/2
+
+### 7.18. Make HTTP/2 requests
+
+#### 7.18.1. HTTP/2 request with `curl`
+
+The request with `curl` was made using the following command:
+
+```sh
+curl --http2 -sv https://example.com
+```
+
+The result can be checked in the logs. There, we can find the HTTP/2 request
+issued:
+
+```http
+GET / HTTP/2
+Host: example.com
+user-agent: curl/7.88.1
+accept: */*
+```
+
+* The headers sent are `Host`, `User-Agent`, and `Accept`
+* The TLS version used is v1.3, as shown in all TLS lines. Here is the first
+  one:
+
+    ```text
+    * TLSv1.3 (OUT), TLS handshake, Client hello (1):
+    ```
+
+* There appears to be only one stream, but we can't tell with `curl`.
+
+* The HTTP/2 frame types are not shown with `curl`.
+
+#### 7.18.2. HTTP/2 request with `nghttp`
+
+
+The request with `nghttp` was made using the following command:
+
+```sh
+nghttp -v https://example.com
+```
+
+The result can be checked in the logs.
+
+* In this case, the headers sent were `accept`, `accept-encoding` and
+  `user-agent`. The `Host` header was omitted, and its information was sent
+  instead in the `:authority` pseudo-header. The `:scheme` pseudo-header was
+  also included.
+
+* In the case of `nghttp`, `PRIORITY` frames were sent to streams 3, 5, 7, 9,
+  and 11. However, this does **not** open the streams. Only one stream was
+  opened, stream 13, when the client sent the first `HEADERS` frame. This frame
+  was sent with the `END_STREAM` flag, signaling that no more requests would be
+  made on the same stream. The last response frame (a `DATA` frame) also had
+  the `END_STREAM` flag set, so the stream was closed after the exchange.
+
+* The frame types exchanged were `SETTINGS`, `PRIORITY` (deprecated),
+  `HEADERS`, `WINDOW_UPDATE`, `DATA`, and `GOAWAY`.
+
+As we can see, `nghttp` provides a lot more information about the HTTP/2
+exchange, while `curl` allowed us to see the TLS transaction.
+
