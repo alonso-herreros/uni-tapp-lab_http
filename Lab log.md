@@ -847,3 +847,28 @@ The result can be checked in the logs.
 As we can see, `nghttp` provides a lot more information about the HTTP/2
 exchange, while `curl` allowed us to see the TLS transaction.
 
+## Part 8: Redirection and Virtual Hosts
+
+### 8.19 Redirect `/old/` to `/new/`
+
+This redirection is configured using the `Redirect` directive in the
+`apache2.conf` file. The last lines in the following block from the `<IfModule
+alias_module>` section was updated:
+
+```apacheconf
+    #
+    # Redirect: Allows you to tell clients about documents that used to
+    # exist in your server's namespace, but do not anymore. The client
+    # will make a new request for the document at its new location.
+    #
+    Redirect permanent /old/ /new/
+```
+
+Upon a server restart, trying to access the old url caused the browser to
+automatically switch to the new url. However, since there are no resources at
+the new location either, a `404 Not Found` error page was displayed
+
+When issuing the `GET` request for the old resource, a `301 Moved Permanently`
+response is received, which the browser processes automaticallly to update the
+URL.
+
